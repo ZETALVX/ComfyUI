@@ -1,0 +1,883 @@
+{
+  "id": "129f57bb-3d0b-412b-b0df-feb15ea909e9",
+  "revision": 0,
+  "last_node_id": 26,
+  "last_link_id": 36,
+  "nodes": [
+    {
+      "id": 14,
+      "type": "SaveAudio",
+      "pos": [
+        979.5115966796875,
+        1125.5487060546875
+      ],
+      "size": [
+        340,
+        112
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 20
+        }
+      ],
+      "outputs": [],
+      "title": "Save Music (FLAC)",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.62",
+        "Node name for S&R": "SaveAudio"
+      },
+      "widgets_values": [
+        "output/no_vocals_demucsVoce"
+      ]
+    },
+    {
+      "id": 12,
+      "type": "SaveAudio",
+      "pos": [
+        983.4694213867188,
+        967.5089111328125
+      ],
+      "size": [
+        340,
+        112
+      ],
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 36
+        }
+      ],
+      "outputs": [],
+      "title": "Save Vocals (FLAC)",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.62",
+        "Node name for S&R": "SaveAudio"
+      },
+      "widgets_values": [
+        "output/no_vocals_demucsVoce"
+      ]
+    },
+    {
+      "id": 2,
+      "type": "AudioSeparateDemucs",
+      "pos": [
+        141.94625854492188,
+        468.45220947265625
+      ],
+      "size": [
+        440,
+        278
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input_sound",
+          "type": "AUDIO",
+          "link": 25
+        }
+      ],
+      "outputs": [
+        {
+          "name": "vocals",
+          "type": "AUDIO",
+          "links": [
+            3
+          ]
+        },
+        {
+          "name": "drums",
+          "type": "AUDIO",
+          "links": [
+            8
+          ]
+        },
+        {
+          "name": "bass",
+          "type": "AUDIO",
+          "links": [
+            5
+          ]
+        },
+        {
+          "name": "other",
+          "type": "AUDIO",
+          "links": [
+            2
+          ]
+        },
+        {
+          "name": "guitar",
+          "type": "AUDIO",
+          "links": [
+            6
+          ]
+        },
+        {
+          "name": "piano",
+          "type": "AUDIO",
+          "links": [
+            7
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "audio-separation",
+        "ver": "8a84f6b48ef62f63a4c96ef62b192a49c70b7480",
+        "Node name for S&R": "AudioSeparateDemucs"
+      },
+      "widgets_values": [
+        "⬇️  Hybrid Transformer 6 sources",
+        6,
+        0.75,
+        true,
+        32,
+        "cuda:0"
+      ]
+    },
+    {
+      "id": 4,
+      "type": "SaveAudio",
+      "pos": [
+        687.2777099609375,
+        356.9027099609375
+      ],
+      "size": [
+        340,
+        112
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 3
+        }
+      ],
+      "outputs": [],
+      "title": "Save Vocal (FLAC)",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.62",
+        "Node name for S&R": "SaveAudio"
+      },
+      "widgets_values": [
+        "output/vocals_demucs2"
+      ]
+    },
+    {
+      "id": 10,
+      "type": "SaveAudio",
+      "pos": [
+        1048.065673828125,
+        348.9490661621094
+      ],
+      "size": [
+        340,
+        112
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 8
+        }
+      ],
+      "outputs": [],
+      "title": "Save Drums (FLAC)",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.62",
+        "Node name for S&R": "SaveAudio"
+      },
+      "widgets_values": [
+        "output/vocals_demucs6"
+      ]
+    },
+    {
+      "id": 7,
+      "type": "SaveAudio",
+      "pos": [
+        688.7149658203125,
+        515.5092163085938
+      ],
+      "size": [
+        340,
+        112
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 5
+        }
+      ],
+      "outputs": [],
+      "title": "Save Bass (FLAC)",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.62",
+        "Node name for S&R": "SaveAudio"
+      },
+      "widgets_values": [
+        "output/vocals_demucs3"
+      ]
+    },
+    {
+      "id": 9,
+      "type": "SaveAudio",
+      "pos": [
+        1052.415771484375,
+        675.5888061523438
+      ],
+      "size": [
+        340,
+        112
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 7
+        }
+      ],
+      "outputs": [],
+      "title": "Save Piano (FLAC)",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.62",
+        "Node name for S&R": "SaveAudio"
+      },
+      "widgets_values": [
+        "output/vocals_demucs5"
+      ]
+    },
+    {
+      "id": 3,
+      "type": "SaveAudio",
+      "pos": [
+        1054.4918212890625,
+        508.8951110839844
+      ],
+      "size": [
+        340,
+        112
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 2
+        }
+      ],
+      "outputs": [],
+      "title": "Save Other sounds (FLAC)",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.62",
+        "Node name for S&R": "SaveAudio"
+      },
+      "widgets_values": [
+        "output/no_vocals_demucs1"
+      ]
+    },
+    {
+      "id": 11,
+      "type": "AudioSeparateVocals",
+      "pos": [
+        583.954345703125,
+        960.2366943359375
+      ],
+      "size": [
+        339.1502685546875,
+        126
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input_sound",
+          "type": "AUDIO",
+          "link": 9
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Vocals",
+          "type": "AUDIO",
+          "links": [
+            35
+          ]
+        },
+        {
+          "name": "Complement",
+          "type": "AUDIO",
+          "links": [
+            20
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "audio-separation",
+        "ver": "8a84f6b48ef62f63a4c96ef62b192a49c70b7480",
+        "Node name for S&R": "AudioSeparateVocals"
+      },
+      "widgets_values": [
+        "⬇️  UVR 438 Main",
+        24,
+        "cuda"
+      ]
+    },
+    {
+      "id": 26,
+      "type": "AudioSeparateVocals",
+      "pos": [
+        591.1552734375,
+        1138.064208984375
+      ],
+      "size": [
+        339.1502685546875,
+        126
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "input_sound",
+          "type": "AUDIO",
+          "link": 35
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Vocals",
+          "type": "AUDIO",
+          "links": [
+            36
+          ]
+        },
+        {
+          "name": "Complement",
+          "type": "AUDIO",
+          "links": []
+        }
+      ],
+      "properties": {
+        "cnr_id": "audio-separation",
+        "ver": "8a84f6b48ef62f63a4c96ef62b192a49c70b7480",
+        "Node name for S&R": "AudioSeparateVocals"
+      },
+      "widgets_values": [
+        "💾 UVR Main",
+        24,
+        "cuda"
+      ]
+    },
+    {
+      "id": 8,
+      "type": "SaveAudio",
+      "pos": [
+        690.0448608398438,
+        675.7854614257812
+      ],
+      "size": [
+        340,
+        112
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 6
+        }
+      ],
+      "outputs": [],
+      "title": "Save Guitar (FLAC)",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.62",
+        "Node name for S&R": "SaveAudio"
+      },
+      "widgets_values": [
+        "output/vocals_demucs4"
+      ]
+    },
+    {
+      "id": 19,
+      "type": "AudioSeparation",
+      "pos": [
+        -627.43798828125,
+        1003.6572875976562
+      ],
+      "size": [
+        270,
+        166
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 33
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Bass",
+          "type": "AUDIO",
+          "links": [
+            32
+          ]
+        },
+        {
+          "name": "Drums",
+          "type": "AUDIO",
+          "links": [
+            29
+          ]
+        },
+        {
+          "name": "Other",
+          "type": "AUDIO",
+          "links": [
+            31
+          ]
+        },
+        {
+          "name": "Vocals",
+          "type": "AUDIO",
+          "links": [
+            30
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "audio-separation-nodes-comfyui",
+        "ver": "1.4.0",
+        "Node name for S&R": "AudioSeparation"
+      },
+      "widgets_values": [
+        "linear",
+        10,
+        0.1
+      ]
+    },
+    {
+      "id": 24,
+      "type": "SaveAudio",
+      "pos": [
+        -289.8642883300781,
+        918.5064086914062
+      ],
+      "size": [
+        340,
+        112
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 32
+        }
+      ],
+      "outputs": [],
+      "title": "Save Bass (FLAC)",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.62",
+        "Node name for S&R": "SaveAudio"
+      },
+      "widgets_values": [
+        "output/vocals_demucs3"
+      ]
+    },
+    {
+      "id": 21,
+      "type": "SaveAudio",
+      "pos": [
+        78.75875854492188,
+        916.0331420898438
+      ],
+      "size": [
+        340,
+        112
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 29
+        }
+      ],
+      "outputs": [],
+      "title": "Save Drums (FLAC)",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.62",
+        "Node name for S&R": "SaveAudio"
+      },
+      "widgets_values": [
+        "output/vocals_demucs6"
+      ]
+    },
+    {
+      "id": 23,
+      "type": "SaveAudio",
+      "pos": [
+        -288.6271667480469,
+        1074.368408203125
+      ],
+      "size": [
+        340,
+        112
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 30
+        }
+      ],
+      "outputs": [],
+      "title": "Save Vocals (FLAC)",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.62",
+        "Node name for S&R": "SaveAudio"
+      },
+      "widgets_values": [
+        "output/no_vocals_demucsVoce"
+      ]
+    },
+    {
+      "id": 22,
+      "type": "SaveAudio",
+      "pos": [
+        75.04782104492188,
+        1086.7381591796875
+      ],
+      "size": [
+        340,
+        112
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 31
+        }
+      ],
+      "outputs": [],
+      "title": "Save Other sounds (FLAC)",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.62",
+        "Node name for S&R": "SaveAudio"
+      },
+      "widgets_values": [
+        "output/no_vocals_demucs1"
+      ]
+    },
+    {
+      "id": 1,
+      "type": "LoadAudio",
+      "pos": [
+        -293.8390808105469,
+        529.5873413085938
+      ],
+      "size": [
+        340,
+        140
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "links": [
+            9,
+            25,
+            33
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.62",
+        "Node name for S&R": "LoadAudio"
+      },
+      "widgets_values": [
+        "ComfyUI_00050_.flac",
+        null,
+        null
+      ]
+    },
+    {
+      "id": 15,
+      "type": "Note",
+      "pos": [
+        -925.1380615234375,
+        186.48825073242188
+      ],
+      "size": [
+        515.8980102539062,
+        642.9568481445312
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "This workflow combines Demucs, DMX, and Audio Separator to extract clean stems from any audio file directly inside ComfyUI.\nEach model handles different situations, so using them together produces more stable and detailed results.\n\n-- Model Roles --\n\nDemucs (Hybrid Transformer)\nBest for natural-sounding stems. Strong on vocals, drums, and general instrument clarity.\n\nDMX (MDX-Net)\nMore aggressive separation. Useful when Demucs leaves low-frequency bleed or background noise.\n\nAudio Separator (FUI nodes)\nFast, lightweight extraction. Good for quick stems or isolating specific parts without heavy processing.\n\n-- Why There Are Two DMX Passes --\n\nI added two DMX nodes processing vocals sequentially.\nSometimes a second pass removes remaining noise or reverb that the first pass doesn’t catch.\nIf you don’t need it—or if the source is already clean—you can disable the second DMX to save GPU time.\n\nQuality Tips:\n\n- Always load WAV/FLAC instead of MP3 (avoids compression artifacts).\n\n- Use Hybrid Transformer and larger segment sizes for more accuracy.\n\n- Increase overlap slightly (0.6–0.8) to reduce boundary artifacts.\n\n- If residual noise remains, blend Demucs + DMX outputs (DMX is good for cleanup).\n\n- Normalize stems after export to prevent clipping.\n\nFor difficult tracks, run different models on the same source and keep the cleanest result.\n\nSuggested Use Cases:\n\n- Vocal isolation for covers/remixes\n\n- Drum/bass extraction for sampling\n\n- Instrumental reconstruction\n\n- Sound design and stem re-mixing"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    }
+  ],
+  "links": [
+    [
+      2,
+      2,
+      3,
+      3,
+      0,
+      "AUDIO"
+    ],
+    [
+      3,
+      2,
+      0,
+      4,
+      0,
+      "AUDIO"
+    ],
+    [
+      5,
+      2,
+      2,
+      7,
+      0,
+      "AUDIO"
+    ],
+    [
+      6,
+      2,
+      4,
+      8,
+      0,
+      "AUDIO"
+    ],
+    [
+      7,
+      2,
+      5,
+      9,
+      0,
+      "AUDIO"
+    ],
+    [
+      8,
+      2,
+      1,
+      10,
+      0,
+      "AUDIO"
+    ],
+    [
+      9,
+      1,
+      0,
+      11,
+      0,
+      "AUDIO"
+    ],
+    [
+      20,
+      11,
+      1,
+      14,
+      0,
+      "AUDIO"
+    ],
+    [
+      25,
+      1,
+      0,
+      2,
+      0,
+      "AUDIO"
+    ],
+    [
+      29,
+      19,
+      1,
+      21,
+      0,
+      "AUDIO"
+    ],
+    [
+      30,
+      19,
+      3,
+      23,
+      0,
+      "AUDIO"
+    ],
+    [
+      31,
+      19,
+      2,
+      22,
+      0,
+      "AUDIO"
+    ],
+    [
+      32,
+      19,
+      0,
+      24,
+      0,
+      "AUDIO"
+    ],
+    [
+      33,
+      1,
+      0,
+      19,
+      0,
+      "AUDIO"
+    ],
+    [
+      35,
+      11,
+      0,
+      26,
+      0,
+      "AUDIO"
+    ],
+    [
+      36,
+      26,
+      0,
+      12,
+      0,
+      "AUDIO"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 2,
+      "title": "Demucs Audio Separator",
+      "bounding": [
+        120,
+        400,
+        473.06549072265625,
+        358.8754577636719
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 3,
+      "title": "MDX",
+      "bounding": [
+        566.7525634765625,
+        888.8096923828125,
+        826.78369140625,
+        374.9256591796875
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 4,
+      "title": "Save Audio",
+      "bounding": [
+        669.854736328125,
+        264.1638488769531,
+        741.8298950195312,
+        546.6732177734375
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 5,
+      "title": "Audio Separator",
+      "bounding": [
+        -662.9942016601562,
+        881.9340209960938,
+        1094.70361328125,
+        373.42889404296875
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.6681101100927037,
+      "offset": [
+        1381.2274339247176,
+        -31.285219468686066
+      ]
+    },
+    "frontendVersion": "1.27.7"
+  },
+  "version": 0.4
+}
