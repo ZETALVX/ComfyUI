@@ -1,9 +1,9 @@
 For these workflows:
 
-InstantID_FaceRec_STYLE_Zetalvx.json
-InstantID_SingleImageFaceRecToImage_Zetalvx.json
-InstantID_depth_FaceSwap_Inpainting_zetalvx.json
-InstantID_depth_FaceSwap_Zetalvx.json
+InstantID_FaceRec_STYLE_Zetalvx.json, 
+InstantID_SingleImageFaceRecToImage_Zetalvx.json, 
+InstantID_depth_FaceSwap_Inpainting_zetalvx.json, 
+InstantID_depth_FaceSwap_Zetalvx.json, 
 
 INSTANTID – REQUIRED FILES AND PATHS (COMFYUI)
 
