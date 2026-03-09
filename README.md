@@ -18,7 +18,7 @@ Location:
 /ComfyUI/models/controlnet/instantid-controlnet.safetensors
 
 Download:
-[https://huggingface.co/xingren23/comfyflow-models/resolve/8297c11e55592e513093be0a4085dd666d3789e4/controlnet/instantid-controlnet.safetensors?download=true](https://huggingface.co/xingren23/comfyflow-models/resolve/8297c11e55592e513093be0a4085dd666d3789e4/controlnet/instantid-controlnet.safetensors?download=true)
+[https://huggingface.co/xingren23/comfyflow-models/blob/8297c11e55592e513093be0a4085dd666d3789e4/controlnet/instantid-controlnet.safetensors)
 
 ---
 
@@ -56,7 +56,8 @@ Required folder:
 Download release:
 [https://github.com/deepinsight/insightface/releases](https://github.com/deepinsight/insightface/releases)
 
-Extract the **antelopev2** folder inside `models/insightface`.
+Extract the **antelopev2** folder inside :
+/home/theboss/ai/ComfyUI/models/insightface/models/antelopev2
 
 ---
 
@@ -67,7 +68,8 @@ Location:
 /ComfyUI/models/clip_vision/open_clip_model.safetensors
 
 Download:
-[https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/blob/main/split_files/clip_vision/clip_vision_h.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/blob/main/split_files/clip_vision/clip_vision_h.safetensors)
+
+https://huggingface.co/laion/CLIP-ViT-H-14-laion2B-s32B-b79K/resolve/main/open_clip_model.safetensors?download=true
 
 ---
 
