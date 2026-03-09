@@ -77,7 +77,7 @@ PYTHON DEPENDENCIES TO INSTALL IN THE COMFYUI ENVIRONMENT
 
 Install inside the ComfyUI virtual environment:
 
-venv311/bin/python -m pip install insightface onnxruntime-gpu opencv-python
+your/env/python -m pip install insightface onnxruntime-gpu opencv-python
 
 Installed libraries:
 
