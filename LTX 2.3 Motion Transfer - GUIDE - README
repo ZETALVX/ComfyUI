@@ -1,0 +1,193 @@
+# 🎬  (ComfyUI Workflow)
+
+This project shows a **video-to-video identity transfer workflow** using:
+
+* **Qwen 2.5 Image Edit (2511)** → identity replacement
+* **LTX 2.3** → motion transfer + video regeneration
+* **IC-LoRA Union Control** → structural consistency (depth + pose + edges)
+
+The result is a pipeline that recreates a video using:
+
+* identity from an image
+* motion and performance from a video
+
+---
+
+## 📂 Workflow
+
+Included workflow:
+
+*
+
+Import it directly in ComfyUI.
+
+---
+
+# ⚙️ Requirements
+
+## ComfyUI
+
+Install ComfyUI and create a Python venv (Python 3.11 recommended).
+
+---
+
+## Custom Nodes
+
+Clone required nodes:
+
+```bash
+cd ~/ai/ComfyUI/custom_nodes
+
+git clone https://github.com/Lightricks/ComfyUI-LTXVideo
+git clone https://github.com/kijai/ComfyUI-KJNodes
+git clone https://github.com/cubiq/ComfyUI_essentials
+git clone https://github.com/akatz-ai/ComfyUI-DepthCrafter-Nodes
+git clone https://github.com/pythongosssss/ComfyUI-Custom-Scripts
+git clone https://github.com/evanspearman/ComfyMath
+```
+
+Install dependencies:
+
+```bash
+for d in \
+  ~/ai/ComfyUI/custom_nodes/ComfyUI-LTXVideo \
+  ~/ai/ComfyUI/custom_nodes/ComfyUI-KJNodes \
+  ~/ai/ComfyUI/custom_nodes/ComfyUI_essentials \
+  ~/ai/ComfyUI/custom_nodes/ComfyUI-DepthCrafter-Nodes \
+  ~/ai/ComfyUI/custom_nodes/ComfyMath
+do
+  [ -f "$d/requirements.txt" ] && ~/ai/ComfyUI/venv311/bin/python -m pip install -r "$d/requirements.txt"
+done
+```
+
+---
+
+## 🧠 Models
+
+### LTX Base Model
+
+Place in:
+
+```
+ComfyUI/models/checkpoints/
+```
+
+Required:
+
+```
+ltx-2.3-22b-dev-fp8.safetensors
+```
+
+---
+
+### Distilled LoRA (required)
+
+```
+ComfyUI/models/loras/
+```
+
+```
+ltx-2.3-22b-distilled-lora-384.safetensors
+```
+
+---
+
+### IC-LoRA Control Models
+
+Place in:
+
+```
+ComfyUI/models/loras/
+```
+
+Download:
+
+```bash
+git clone https://huggingface.co/Lightricks/LTX-2.3-22b-IC-LoRA-Union-Control
+mv LTX-2.3-22b-IC-LoRA-Union-Control/ltx-2.3-22b-ic-lora-union-control-ref0.5.safetensors .
+rm -rf LTX-2.3-22b-IC-LoRA-Union-Control
+
+git clone https://huggingface.co/Lightricks/LTX-2-19b-IC-LoRA-Depth-Control
+mv LTX-2-19b-IC-LoRA-Depth-Control/ltx-2-19b-ic-lora-depth-control.safetensors .
+rm -rf LTX-2-19b-IC-LoRA-Depth-Control
+
+git clone https://huggingface.co/Lightricks/LTX-2-19b-IC-LoRA-Pose-Control
+mv LTX-2-19b-IC-LoRA-Pose-Control/ltx-2-19b-ic-lora-pose-control.safetensors .
+rm -rf LTX-2-19b-IC-LoRA-Pose-Control
+
+git clone https://huggingface.co/Lightricks/LTX-2-19b-IC-LoRA-Canny-Control
+mv LTX-2-19b-IC-LoRA-Canny-Control/ltx-2-19b-ic-lora-canny-control.safetensors .
+rm -rf LTX-2-19b-IC-LoRA-Canny-Control
+
+git clone https://huggingface.co/Lightricks/LTX-2.3-22b-IC-LoRA-Motion-Track-Control
+mv LTX-2.3-22b-IC-LoRA-Motion-Track-Control/ltx-2.3-22b-ic-lora-motion-track-control-ref0.5.safetensors .
+rm -rf LTX-2.3-22b-IC-LoRA-Motion-Track-Control
+```
+
+---
+
+## 🌊 DepthCrafter (Required)
+
+Install git-lfs if missing:
+
+```bash
+sudo apt install git-lfs
+git lfs install
+```
+
+Download model DepthCrafter:
+
+```bash
+cd ~/ai/ComfyUI/models/depthcrafter
+git clone https://huggingface.co/tencent/DepthCrafter tencent_DepthCrafter
+cd tencent_DepthCrafter
+git lfs pull
+```
+
+---
+
+# 🧪 How it works (with the example on my video)
+
+Pipeline:
+
+1. **Qwen Edit (2511)**
+
+   * Replace identity on a reference frame
+
+2. **LTX 2.3**
+
+   * Uses video as motion guide
+   * Uses IC-LoRA (depth/pose/edges) for structure
+   * Regenerates full video
+
+3. **Output**
+
+   * Same motion and performance
+   * New identity
+
+---
+
+# ⚠️ Notes
+
+* This is **not traditional face swap**
+* It is **video regeneration with identity conditioning**
+* Identity can drift in long clips → split videos if needed
+* Best results:
+
+  * short clips
+  * stable camera
+  * clean face reference (cropped)
+
+---
+
+# 🚀 Result
+
+This workflow allows:
+
+* identity transfer
+* motion transfer
+* video recreation
+
+Basically:
+
+> separate identity from performance
