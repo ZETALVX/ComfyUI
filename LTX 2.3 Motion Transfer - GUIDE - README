@@ -1,10 +1,10 @@
-# 🎬  (ComfyUI Workflow)
+🎬  (ComfyUI Workflow)
 
-This project shows a **video-to-video identity transfer workflow** using:
+This project shows a video-to-video identity transfer workflow using:
 
-* **Qwen 2.5 Image Edit (2511)** → identity replacement
-* **LTX 2.3** → motion transfer + video regeneration
-* **IC-LoRA Union Control** → structural consistency (depth + pose + edges)
+* Qwen 2.5 Image Edit (2511) → identity replacement
+* LTX 2.3 → motion transfer + video regeneration
+* IC-LoRA Union Control** → structural consistency (depth + pose + edges)
 
 The result is a pipeline that recreates a video using:
 
@@ -13,25 +13,23 @@ The result is a pipeline that recreates a video using:
 
 ---
 
-## 📂 Workflow
+📂 Workflow
 
 Included workflow:
-
-*
 
 Import it directly in ComfyUI.
 
 ---
 
-# ⚙️ Requirements
+⚙️ Requirements
 
-## ComfyUI
+ComfyUI
 
 Install ComfyUI and create a Python venv (Python 3.11 recommended).
 
 ---
 
-## Custom Nodes
+Custom Nodes
 
 Clone required nodes:
 
@@ -62,7 +60,7 @@ done
 
 ---
 
-## 🧠 Models
+🧠 Models
 
 ### LTX Base Model
 
@@ -126,7 +124,7 @@ rm -rf LTX-2.3-22b-IC-LoRA-Motion-Track-Control
 
 ---
 
-## 🌊 DepthCrafter (Required)
+🌊 DepthCrafter (Required)
 
 Install git-lfs if missing:
 
@@ -146,31 +144,31 @@ git lfs pull
 
 ---
 
-# 🧪 How it works (with the example on my video)
+🧪 How it works (with the example on my video)
 
 Pipeline:
 
-1. **Qwen Edit (2511)**
+1. Qwen Edit (2511)
 
    * Replace identity on a reference frame
 
-2. **LTX 2.3**
+2. LTX 2.3
 
    * Uses video as motion guide
    * Uses IC-LoRA (depth/pose/edges) for structure
    * Regenerates full video
 
-3. **Output**
+3. Output
 
    * Same motion and performance
    * New identity
 
 ---
 
-# ⚠️ Notes
+⚠️ Notes
 
-* This is **not traditional face swap**
-* It is **video regeneration with identity conditioning**
+* This is not traditional face swap
+* It is video regeneration with identity conditioning
 * Identity can drift in long clips → split videos if needed
 * Best results:
 
@@ -180,7 +178,7 @@ Pipeline:
 
 ---
 
-# 🚀 Result
+🚀 Result
 
 This workflow allows:
 
