@@ -1,0 +1,88 @@
+Ace Step 1.5 LoRA Training in ComfyUI
+
+This repository contains my workflow, notes, and a quick-start guide for training LoRAs for ACE-Step 1.5 directly inside ComfyUI.
+
+It’s not meant to be a perfect or official setup.
+This is simply a practical base I’m sharing so you can experiment, modify it, and build your own workflows.
+
+For the full implementation and complete documentation, check the original project:
+https://github.com/filliptm/ComfyUI-FL-AceStep-Training
+
+What this setup uses
+
+This workflow is based on the ComfyUI-FL-AceStep-Training custom node pack, which provides a full LoRA training pipeline for ACE-Step 1.5 inside ComfyUI.
+
+Main components:
+
+ComfyUI
+ACE-Step 1.5 model
+ComfyUI-FL-AceStep-Training
+Optional AceStep LLM Loader (for automatic dataset labeling)
+
+From the checkpoint loader you will use:
+
+MODEL
+VAE
+CLIP
+
+Main nodes used
+
+These are the core nodes from the original project:
+
+FL AceStep LLM Loader
+Loads a language model for optional automatic labeling.
+FL AceStep Scan Audio Directory
+Scans your dataset folder and reads metadata if available.
+FL AceStep Auto-Label Samples
+Generates captions, BPM, key, genre and other metadata.
+FL AceStep Preprocess Dataset
+Encodes audio with VAE and text with CLIP, then saves tensors (.pt).
+FL AceStep Training Configuration
+Lets you configure LoRA parameters like rank, alpha, dropout, learning rate, and epochs.
+FL AceStep Train LoRA
+Runs the actual training process.
+
+Installation
+
+Clone the original node repository into your ComfyUI custom nodes folder:
+
+cd ComfyUI/custom_nodes
+git clone https://github.com/filliptm/ComfyUI-FL-AceStep-Training.git
+
+cd ComfyUI-FL-AceStep-Training
+pip install -r requirements.txt
+
+Restart ComfyUI after installation.
+
+Quick workflow
+
+Load the ACE-Step checkpoint
+Scan your dataset folder
+(Optional) Auto-label with LLM
+Preprocess dataset into tensors
+Configure training parameters
+Train LoRA
+Test the results
+
+Notes
+
+Dataset quality matters more than training time
+Keep your dataset consistent (style, genre, structure)
+Test with small runs before long training
+LLM auto-labeling is optional
+
+About this repo
+
+This is:
+
+a simple workflow reference
+a quick guide
+a base for experimentation
+
+For full features, updates, and detailed explanations, always refer to the original repository:
+https://github.com/filliptm/ComfyUI-FL-AceStep-Training
+
+Credits
+
+All credits go to the original project:
+https://github.com/filliptm/ComfyUI-FL-AceStep-Training
