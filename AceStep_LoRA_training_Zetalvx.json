@@ -1,0 +1,517 @@
+{
+  "id": "9b248ee0-9e2f-4373-98c3-1e9385750f11",
+  "revision": 0,
+  "last_node_id": 8,
+  "last_link_id": 11,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "FL_AceStep_LabelSamples",
+      "pos": [
+        -1095.5837826105849,
+        -690.7461393252551
+      ],
+      "size": [
+        301.92225587486473,
+        219.26905417814567
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "dataset",
+          "type": "ACESTEP_DATASET",
+          "link": 1
+        },
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 2
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 3
+        },
+        {
+          "name": "llm",
+          "type": "ACESTEP_LLM",
+          "link": 4
+        }
+      ],
+      "outputs": [
+        {
+          "name": "dataset",
+          "type": "ACESTEP_DATASET",
+          "links": [
+            6
+          ]
+        },
+        {
+          "name": "labeled_count",
+          "type": "INT",
+          "links": []
+        },
+        {
+          "name": "status",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "properties": {
+        "cnr_id": "fl-acestep-training",
+        "ver": "49740cb896c1c169364c15f7cd821fe813883604",
+        "Node name for S&R": "FL_AceStep_LabelSamples"
+      },
+      "widgets_values": [
+        false,
+        false,
+        true,
+        true
+      ],
+      "color": "#16727c",
+      "bgcolor": "#4F0074"
+    },
+    {
+      "id": 2,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        -2250.787338164529,
+        -510.85852002594453
+      ],
+      "size": [
+        361.21875,
+        130.65625
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            2,
+            7,
+            10
+          ]
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            9
+          ]
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            3,
+            8
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.12.1",
+        "Node name for S&R": "CheckpointLoaderSimple",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.5.2",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "ace_step_1.5_turbo_aio.safetensors"
+      ]
+    },
+    {
+      "id": 6,
+      "type": "FL_AceStep_ScanDirectory",
+      "pos": [
+        -1726.5693683708978,
+        -684.9843073619718
+      ],
+      "size": [
+        290.1817829639374,
+        214.58612728524963
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "dataset",
+          "type": "ACESTEP_DATASET",
+          "links": [
+            1
+          ]
+        },
+        {
+          "name": "sample_count",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "name": "status",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "fl-acestep-training",
+        "ver": "49740cb896c1c169364c15f7cd821fe813883604",
+        "Node name for S&R": "FL_AceStep_ScanDirectory"
+      },
+      "widgets_values": [
+        "/home/theboss/ai/ComfyUI/models/acestep/training/2/dataset/11Song",
+        false,
+        "medieval style",
+        "append"
+      ],
+      "color": "#16727c",
+      "bgcolor": "#4F0074"
+    },
+    {
+      "id": 4,
+      "type": "FL_AceStep_LLMLoader",
+      "pos": [
+        -1397.6163084515144,
+        -683.6142667819021
+      ],
+      "size": [
+        270,
+        211.96875
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "llm",
+          "type": "ACESTEP_LLM",
+          "links": [
+            4
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "fl-acestep-training",
+        "ver": "49740cb896c1c169364c15f7cd821fe813883604",
+        "Node name for S&R": "FL_AceStep_LLMLoader"
+      },
+      "widgets_values": [
+        "acestep-5Hz-lm-4B",
+        "cpu",
+        "pt",
+        ""
+      ],
+      "color": "#16727c",
+      "bgcolor": "#4F0074"
+    },
+    {
+      "id": 7,
+      "type": "FL_AceStep_TrainingConfig",
+      "pos": [
+        -1670.1975840024782,
+        -231.52721303495568
+      ],
+      "size": [
+        327.25,
+        528
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "config",
+          "type": "ACESTEP_TRAINING_CONFIG",
+          "links": [
+            11
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "fl-acestep-training",
+        "ver": "27d70c722e9be51a08825564e6d6741d011eac83",
+        "Node name for S&R": "FL_AceStep_TrainingConfig"
+      },
+      "widgets_values": [
+        12,
+        12,
+        0.05,
+        0.00006,
+        60,
+        1,
+        2,
+        10,
+        "/home/theboss/ai/ComfyUI/models/acestep/training/2/loras",
+        42,
+        "fixed",
+        120,
+        0.015,
+        0.5,
+        "q_proj,k_proj,v_proj,o_proj"
+      ],
+      "color": "#16727c",
+      "bgcolor": "#4F0074"
+    },
+    {
+      "id": 8,
+      "type": "FL_AceStep_Train",
+      "pos": [
+        -1246.9481492721657,
+        -306.0002596429319
+      ],
+      "size": [
+        773.796875,
+        654.203125
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 10
+        },
+        {
+          "name": "config",
+          "type": "ACESTEP_TRAINING_CONFIG",
+          "link": 11
+        }
+      ],
+      "outputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "links": null
+        },
+        {
+          "name": "final_lora_path",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "name": "status",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "properties": {
+        "cnr_id": "fl-acestep-training",
+        "ver": "49740cb896c1c169364c15f7cd821fe813883604",
+        "Node name for S&R": "FL_AceStep_Train"
+      },
+      "widgets_values": [
+        "/home/theboss/ai/ComfyUI/models/acestep/training/2/dataset/check5",
+        "ZetaMedioevo",
+        "",
+        ""
+      ],
+      "color": "#16727c",
+      "bgcolor": "#4F0074"
+    },
+    {
+      "id": 5,
+      "type": "FL_AceStep_PreprocessDataset",
+      "pos": [
+        -737.9511776591277,
+        -694.4653824965326
+      ],
+      "size": [
+        306.2233231071043,
+        222.29535019617686
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "dataset",
+          "type": "ACESTEP_DATASET",
+          "link": 6
+        },
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 7
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 8
+        },
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 9
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output_path",
+          "type": "STRING",
+          "links": []
+        },
+        {
+          "name": "sample_count",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "name": "status",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "fl-acestep-training",
+        "ver": "e867dfc409c8211cb7b95c41e98c32ac6deff7b9",
+        "Node name for S&R": "FL_AceStep_PreprocessDataset"
+      },
+      "widgets_values": [
+        "/home/theboss/ai/ComfyUI/models/acestep/training/2/dataset/check5",
+        600,
+        0
+      ],
+      "color": "#16727c",
+      "bgcolor": "#4F0074"
+    }
+  ],
+  "links": [
+    [
+      1,
+      6,
+      0,
+      1,
+      0,
+      "ACESTEP_DATASET"
+    ],
+    [
+      2,
+      2,
+      0,
+      1,
+      1,
+      "MODEL"
+    ],
+    [
+      3,
+      2,
+      2,
+      1,
+      2,
+      "VAE"
+    ],
+    [
+      4,
+      4,
+      0,
+      1,
+      3,
+      "ACESTEP_LLM"
+    ],
+    [
+      6,
+      1,
+      0,
+      5,
+      0,
+      "ACESTEP_DATASET"
+    ],
+    [
+      7,
+      2,
+      0,
+      5,
+      1,
+      "MODEL"
+    ],
+    [
+      8,
+      2,
+      2,
+      5,
+      2,
+      "VAE"
+    ],
+    [
+      9,
+      2,
+      1,
+      5,
+      3,
+      "CLIP"
+    ],
+    [
+      10,
+      2,
+      0,
+      8,
+      0,
+      "MODEL"
+    ],
+    [
+      11,
+      7,
+      0,
+      8,
+      1,
+      "ACESTEP_TRAINING_CONFIG"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "Dataset",
+      "bounding": [
+        -1865.3567641342056,
+        -872.1465823920033,
+        1503.233298449767,
+        488.6491919090364
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 2,
+      "title": "Training",
+      "bounding": [
+        -1945.9186109949806,
+        -355.1014009456545,
+        1590.2804545143722,
+        721.3734571996873
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "workflowRendererVersion": "LG",
+    "ds": {
+      "scale": 0.6588450000000088,
+      "offset": [
+        2410.533029897204,
+        960.1413730114343
+      ]
+    },
+    "frontendVersion": "1.42.11",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}
