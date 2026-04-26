@@ -5,6 +5,9 @@ This repository contains a workflow, notes, and a quick-start guide for training
 For the full implementation and complete documentation, check the original project:
 https://github.com/filliptm/ComfyUI-FL-AceStep-Training
 
+I created a file with some examples you can try to use:
+https://github.com/ZETALVX/ComfyUI/blob/main/AceStep_TRAINING_CONFIGS.md
+
 ---
 
 ⚙️ What this setup uses
