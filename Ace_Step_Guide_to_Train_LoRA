@@ -1,9 +1,6 @@
 Ace Step 1.5 LoRA Training in ComfyUI
 
-This repository contains my workflow, notes, and a quick-start guide for training LoRAs for ACE-Step 1.5 directly inside ComfyUI.
-
-It’s not meant to be a perfect or official setup.
-This is simply a practical base I’m sharing so you can experiment, modify it, and build your own workflows.
+This repository contains a workflow, notes, and a quick-start guide for training LoRAs for ACE-Step 1.5 directly inside ComfyUI.
 
 For the full implementation and complete documentation, check the original project:
 [https://github.com/filliptm/ComfyUI-FL-AceStep-Training](https://github.com/filliptm/ComfyUI-FL-AceStep-Training)
