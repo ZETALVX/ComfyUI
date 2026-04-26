@@ -6,83 +6,286 @@ It’s not meant to be a perfect or official setup.
 This is simply a practical base I’m sharing so you can experiment, modify it, and build your own workflows.
 
 For the full implementation and complete documentation, check the original project:
-https://github.com/filliptm/ComfyUI-FL-AceStep-Training
+[https://github.com/filliptm/ComfyUI-FL-AceStep-Training](https://github.com/filliptm/ComfyUI-FL-AceStep-Training)
 
-What this setup uses
+---
+
+⚙️ What this setup uses
 
 This workflow is based on the ComfyUI-FL-AceStep-Training custom node pack, which provides a full LoRA training pipeline for ACE-Step 1.5 inside ComfyUI.
 
-Main components:
+### Main components:
 
-ComfyUI
-ACE-Step 1.5 model
-ComfyUI-FL-AceStep-Training
-Optional AceStep LLM Loader (for automatic dataset labeling)
+* ComfyUI
+* ACE-Step 1.5 model
+* ComfyUI-FL-AceStep-Training
+* (Optional) AceStep LLM Loader (for automatic dataset labeling)
 
 From the checkpoint loader you will use:
 
-MODEL
-VAE
-CLIP
+* MODEL
+* VAE
+* CLIP
 
-Main nodes used
+---
+
+🧠 Main nodes used
 
 These are the core nodes from the original project:
 
-FL AceStep LLM Loader
-Loads a language model for optional automatic labeling.
-FL AceStep Scan Audio Directory
-Scans your dataset folder and reads metadata if available.
-FL AceStep Auto-Label Samples
-Generates captions, BPM, key, genre and other metadata.
-FL AceStep Preprocess Dataset
-Encodes audio with VAE and text with CLIP, then saves tensors (.pt).
-FL AceStep Training Configuration
-Lets you configure LoRA parameters like rank, alpha, dropout, learning rate, and epochs.
-FL AceStep Train LoRA
-Runs the actual training process.
+ FL AceStep LLM Loader
+  Loads a language model for optional automatic labeling.
 
-Installation
+ FL AceStep Scan Audio Directory
+  Scans your dataset folder and reads metadata if available.
+
+ FL AceStep Auto-Label Samples
+  Generates captions, BPM, key, genre and other metadata.
+
+ FL AceStep Preprocess Dataset
+  Encodes audio with VAE and text with CLIP, then saves tensors (.pt).
+
+ FL AceStep Training Configuration
+  Lets you configure LoRA parameters like rank, alpha, dropout, learning rate, and epochs.
+
+ FL AceStep Train LoRA
+  Runs the actual training process.
+
+---
+
+📁 Folder structure (important)
+
+Inside your ACE-Step working directory (the one you set in the nodes), you will typically use **4 main folders**:
+
+---
+
+1. 🎧 Audio dataset folder
+
+Contains your raw audio files.
+
+Example:
+
+```
+/models/acestep/training/my_project/dataset/
+```
+
+👉 Put here:
+
+* .wav or .mp3 files
+* consistent style (very important)
+
+---
+
+2. 🏷️ Labeled dataset output
+
+Created automatically after the labeling step.
+
+Contains:
+
+* metadata
+* captions
+* audio analysis
+
+---
+
+3. 🧪 Preprocessed dataset (tensors)
+
+Created by the Preprocess Dataset node
+
+Example:
+
+```
+/dataset/check1/
+```
+
+👉 This folder contains:
+
+* `.pt` tensor files
+* encoded audio + text
+
+⚠️ This is the folder you MUST use for training.
+
+---
+
+4. 📦 Training output folder
+
+Set inside the Training Configuration node
+
+Example:
+
+```
+/output/acestep/loras/
+```
+
+During training it will create:
+
+```
+step_x/
+step_x/
+step_x/
+final/
+```
+
+---
+
+🏷️ Tag system (important for LoRA behavior)
+
+In the **Scan Audio Directory node**, you can define a custom tag:
+
+* `custom_tag` → the keyword that will trigger your LoRA
+* `tag_position` → controls where the tag is inserted in the generated captions
+
+Available options:
+
+* **prepend** → adds the tag at the beginning
+* **append** → adds the tag at the end
+* **replace** → replaces the original tag completely
+
+👉 This directly affects how strongly and how consistently your LoRA will activate during generation.
+
+Example:
+
+```
+ZetaStomp
+MedievalVibe
+SummerTechno
+```
+
+---
+
+🎯 How LoRA files are created and used
+
+After training completes:
+
+1. Go into:
+
+```
+/output/.../final/
+```
+
+2. You will find:
+
+```
+adapter_model.safetensors
+adapter_config.json
+```
+
+👉 This is your LoRA.
+
+---
+
+🔄 Rename and install your LoRA
+
+1. Rename:
+
+```
+adapter_model.safetensors → my_style_lora.safetensors
+```
+
+2. Move it to:
+
+```
+ComfyUI/models/loras/
+```
+
+3. Restart ComfyUI
+
+---
+
+🎧 How to use your LoRA
+
+In your generation workflow:
+
+1. Add:
+   👉 Load LoRA node
+
+2. Connect it:
+
+```
+Checkpoint → Load LoRA → rest of the pipeline
+```
+
+3. Set:
+
+* strength_model: 0.8 – 1.2 (start here)
+
+---
+
+🧠 Triggering your LoRA
+
+Use the tag you defined during dataset scan.
+
+Example prompt:
+
+```
+energetic techno track, festival vibe, ZetaStomp
+```
+
+👉 The tag is what activates your trained style.
+
+---
+
+⚙️ Installation
 
 Clone the original node repository into your ComfyUI custom nodes folder:
 
+```bash
 cd ComfyUI/custom_nodes
 git clone https://github.com/filliptm/ComfyUI-FL-AceStep-Training.git
 
 cd ComfyUI-FL-AceStep-Training
 pip install -r requirements.txt
+```
 
 Restart ComfyUI after installation.
 
-Quick workflow
+---
 
-Load the ACE-Step checkpoint
-Scan your dataset folder
-(Optional) Auto-label with LLM
-Preprocess dataset into tensors
-Configure training parameters
-Train LoRA
-Test the results
+🚀 Quick workflow
 
-Notes
+1. Load the ACE-Step checkpoint
+2. Scan your dataset folder
+3. (Optional) Auto-label with LLM
+4. Preprocess dataset into tensors
+5. Configure training parameters
+6. Train LoRA
+7. Move LoRA to `/models/loras/`
+8. Test in generation workflow
 
-Dataset quality matters more than training time
-Keep your dataset consistent (style, genre, structure)
-Test with small runs before long training
-LLM auto-labeling is optional
+---
 
-About this repo
+🧠 Notes
+
+* Dataset quality matters more than training time
+* Keep your dataset consistent (style, genre, structure)
+* Test with small runs before long training
+* LLM auto-labeling is optional
+
+---
+
+📌 About this repo
 
 This is:
 
-a simple workflow reference
-a quick guide
-a base for experimentation
+* a simple workflow reference
+* a quick guide
+* a base for experimentation
 
 For full features, updates, and detailed explanations, always refer to the original repository:
-https://github.com/filliptm/ComfyUI-FL-AceStep-Training
+[https://github.com/filliptm/ComfyUI-FL-AceStep-Training](https://github.com/filliptm/ComfyUI-FL-AceStep-Training)
 
-Credits
+---
+
+🙏 Credits
 
 All credits go to the original project:
-https://github.com/filliptm/ComfyUI-FL-AceStep-Training
+[https://github.com/filliptm/ComfyUI-FL-AceStep-Training](https://github.com/filliptm/ComfyUI-FL-AceStep-Training)
+
+---
+
+Se vuoi al prossimo giro possiamo aggiungere:
+
+* troubleshooting reale (OOM, VAE error, mismatch modelli)
+* preset training già pronti (tipo viral / medieval / cinematic)
+
+che su GitHub fanno davvero la differenza.
