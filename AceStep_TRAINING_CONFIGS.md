@@ -23,13 +23,10 @@ The most important values are:
 
 Dataset quality usually matters more than pushing the settings higher.
 
----
-
+```text
 ## Very Safe / Low VRAM
-
 # Use this if you get OOM errors or just want a quick test.
 
-```text
 lora_rank: 8
 lora_alpha: 8
 lora_dropout: 0.05
