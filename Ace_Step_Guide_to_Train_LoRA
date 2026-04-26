@@ -226,7 +226,7 @@ energetic techno track, festival vibe, ZetaStomp
 
 Clone the original node repository into your ComfyUI custom nodes folder:
 
-```bash
+
 cd ComfyUI/custom_nodes
 git clone https://github.com/filliptm/ComfyUI-FL-AceStep-Training.git
 
@@ -277,10 +277,6 @@ https://github.com/filliptm/ComfyUI-FL-AceStep-Training
 
 All credits go to the original project:
 https://github.com/filliptm/ComfyUI-FL-AceStep-Training
-
----
-
-Se vuoi al prossimo giro possiamo aggiungere:
 
 * troubleshooting reale (OOM, VAE error, mismatch modelli)
 * preset training già pronti (tipo viral / medieval / cinematic)
