@@ -1,5 +1,5 @@
 {
-  "id": "07824bbb-6672-4bb0-ac36-4313a519e35b",
+  "id": "f6d99fbd-dce9-4a2b-9433-5bcfc40b91fc",
   "revision": 0,
   "last_node_id": 354,
   "last_link_id": 656,
@@ -8,8 +8,8 @@
       "id": 339,
       "type": "PreviewAny",
       "pos": [
-        -1060.5846453458767,
-        4155.691985973526
+        -1060.5847295160406,
+        4595.687823735287
       ],
       "size": [
         553,
@@ -48,8 +48,8 @@
       "id": 75,
       "type": "SaveVideo",
       "pos": [
-        1499.6719464509983,
-        3108.932708629776
+        1499.671283562508,
+        3548.928625727404
       ],
       "size": [
         1728.59375,
@@ -95,8 +95,8 @@
       "id": 340,
       "type": "PreviewAny",
       "pos": [
-        -460.5847063810328,
-        4155.691985973526
+        -460.58495892942983,
+        4595.687823735287
       ],
       "size": [
         553.484375,
@@ -135,8 +135,8 @@
       "id": 338,
       "type": "PreviewAny",
       "pos": [
-        129.4152402132055,
-        4155.691985973526
+        129.41469877856707,
+        4595.687823735287
       ],
       "size": [
         529.25,
@@ -175,8 +175,8 @@
       "id": 332,
       "type": "StringConcatenate",
       "pos": [
-        -1384.4720965177517,
-        3189.030609020401
+        -1384.4722173237622,
+        3629.0262817204566
       ],
       "size": [
         432.34375,
@@ -212,7 +212,7 @@
         "Node name for S&R": "StringConcatenate"
       },
       "widgets_values": [
-        "You are a creative joke writer.\n\nYour task:\n1. Write a short 10 seconds and funny joke in english.\n2. Then describe a simple visual scene that represents the joke.\n\nRules:\n- Keep the joke funny and clear.\n- The scene must be simple and easy to generate.\n- Maximum 2 characters.\n- No text inside the scene.\n- No explanations.\n- if you want, use classic famous jokes, if consistent.\n- Leave the topic information that is indicated. Only if it is not indicated, invent it.\n\nOutput format:\n\n[JOKE]\n(write the joke here)\n[/JOKE]\n\n[SCENE]\n(describe the scene here)\n[/SCENE]\n\nTopic: ",
+        "You are a creative joke writer.\n\nYour task:\n1. Write a short 10 seconds and funny joke.\n2. Then describe a simple visual scene that represents the joke.\n\nRules:\n- Keep the joke funny and clear.\n- The scene must be simple and easy to generate.\n- Maximum 2 characters.\n- No text inside the scene.\n- No explanations.\n- if you want, use classic famous jokes, if consistent.\n- Leave the topic information that is indicated. Only if it is not indicated, invent it.\n\nOutput format:\n\n[JOKE]\n(write the joke here)\n[/JOKE]\n\n[SCENE]\n(describe the scene here)\n[/SCENE]\n\nTopic: ",
         "",
         ""
       ]
@@ -221,8 +221,8 @@
       "id": 342,
       "type": "PrimitiveString",
       "pos": [
-        -2150.8627215177517,
-        4255.174407848526
+        -2151.4879925728847,
+        4696.199531382
       ],
       "size": [
         392.890625,
@@ -255,8 +255,8 @@
       "id": 343,
       "type": "PrimitiveString",
       "pos": [
-        -2148.6896258146267,
-        4126.272552379776
+        -2148.6896530110475,
+        4566.268332396299
       ],
       "size": [
         390.140625,
@@ -289,8 +289,8 @@
       "id": 326,
       "type": "CLIPLoader",
       "pos": [
-        -2156.5116472990017,
-        4379.1044742547765
+        -2156.5116709044582,
+        4819.100262107484
       ],
       "size": [
         393.828125,
@@ -340,8 +340,8 @@
       "id": 341,
       "type": "ComfySwitchNode",
       "pos": [
-        -1898.7011004240017,
-        3596.595306286026
+        -1898.7011648181638,
+        4036.590873304423
       ],
       "size": [
         387.015625,
@@ -385,8 +385,8 @@
       "id": 331,
       "type": "PrimitiveString",
       "pos": [
-        -1904.0481463224392,
-        3767.243499645401
+        -1904.048320971738,
+        4207.239047671838
       ],
       "size": [
         390.984375,
@@ -419,8 +419,8 @@
       "id": 336,
       "type": "StringConcatenate",
       "pos": [
-        -317.3567095548609,
-        3197.908782848526
+        -317.3571265321068,
+        3637.9044473916506
       ],
       "size": [
         471.0625,
@@ -456,7 +456,7 @@
         "Node name for S&R": "StringConcatenate"
       },
       "widgets_values": [
-        "You are a prompt generator for an AI video model.\n\nCreate ONE cinematic video prompt based on the scene.\n\nRules:\n- Output ONLY the final prompt\n- No explanations\n- No labels\n- No extra text\n- No written text in the scene (no subtitles, no captions)\n- Spoken dialogue IS allowed and must be included if present\n- Include the full joke as spoken dialogue\n- Maximum 55 words\n\nThe prompt MUST include:\n- subject\n- environment\n- lighting\n- mood\n- camera detail\n- spoken dialogue (if present)\n\nKeep it simple, visual, cinematic, and slightly humorous.\n\nScene:",
+        "You are a prompt generator for an AI video model.\n\nCreate ONE cinematic video prompt based on the scene.\n\nRules:\n- Output ONLY the final prompt\n- No explanations,\n- No labels,\n- No extra text,\n- No written text in the scene (no subtitles, no captions),\n- Spoken dialogue IS allowed and must be included if present,\n- Include the full joke as spoken dialogue,\n- Specify who is speaking in dialogue,\n- Specify the scene in details,\n- Maximum 55 words,\n\nThe prompt MUST include:\n- subject\n- environment\n- lighting\n- mood\n- camera detail\n- spoken dialogue (if present)\n\nKeep it simple, visual, cinematic, and slightly humorous.\n\nScene:",
         "",
         ""
       ]
@@ -465,12 +465,12 @@
       "id": 335,
       "type": "TextGenerate",
       "pos": [
-        184.84575168781487,
-        3200.031585582901
+        184.84520921789863,
+        3640.027493276567
       ],
       "size": [
         514.984375,
-        637.953125
+        458.65625
       ],
       "flags": {},
       "order": 13,
@@ -546,12 +546,12 @@
       "id": 327,
       "type": "TextGenerate",
       "pos": [
-        -929.304493978689,
-        3186.684661754776
+        -929.3046731145546,
+        3626.680568094312
       ],
       "size": [
         509.40625,
-        657.0625
+        458.65625
       ],
       "flags": {},
       "order": 9,
@@ -627,8 +627,8 @@
       "id": 337,
       "type": "PreviewAny",
       "pos": [
-        -1642.5011492521267,
-        4160.993255504776
+        -1642.5013752236546,
+        4600.989012963368
       ],
       "size": [
         549.984375,
@@ -667,8 +667,8 @@
       "id": 267,
       "type": "b94257db-cdc1-45d3-8913-ca61e782d9c1",
       "pos": [
-        868.8545636384985,
-        3192.909026989151
+        868.8538197975231,
+        3632.904926409361
       ],
       "size": [
         460.078125,
@@ -839,8 +839,8 @@
       "id": 349,
       "type": "MarkdownNote",
       "pos": [
-        -3564.8712664396267,
-        3145.185150036026
+        -3564.8710681277557,
+        3585.181084065196
       ],
       "size": [
         608.25,
@@ -863,8 +863,8 @@
       "id": 350,
       "type": "MarkdownNote",
       "pos": [
-        -2926.7321062833767,
-        3147.923431286026
+        -2926.7320122411043,
+        3587.9191229290755
       ],
       "size": [
         737.53125,
@@ -893,8 +893,8 @@
       "id": 354,
       "type": "PrimitiveInt",
       "pos": [
-        -2155.189216020596,
-        4599.654177879853
+        -2154.5597653200975,
+        5046.9332688591785
       ],
       "size": [
         392.171875,
@@ -921,7 +921,7 @@
         "Node name for S&R": "PrimitiveInt"
       },
       "widgets_values": [
-        1104515019239757,
+        640502427858452,
         "randomize"
       ]
     }
@@ -1400,7 +1400,7 @@
               }
             },
             "widgets_values": [
-              15121759004450,
+              1033470532761044,
               "randomize"
             ]
           },
@@ -2168,7 +2168,7 @@
             ],
             "size": [
               300,
-              215.96875
+              154
             ],
             "flags": {},
             "order": 27,
@@ -2358,7 +2358,7 @@
               4089.999535297014
             ],
             "size": [
-              225,
+              75,
               26
             ],
             "flags": {},
@@ -5107,10 +5107,10 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.42409761837248483,
+      "scale": 0.33677986768718016,
       "offset": [
-        3082.9550413402058,
-        -2613.9062227876216
+        3475.808434091156,
+        -2822.283310680319
       ]
     },
     "frontendVersion": "1.42.11",
