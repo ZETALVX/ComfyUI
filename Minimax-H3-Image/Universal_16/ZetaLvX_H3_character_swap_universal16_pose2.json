@@ -1,0 +1,1024 @@
+{
+  "id": "ba2acde9-0899-5dac-99e3-c935ecb6e16d",
+  "revision": 1,
+  "last_node_id": 46,
+  "last_link_id": 26,
+  "nodes": [
+    {
+      "id": 19,
+      "type": "LoadImage",
+      "pos": [
+        -1410,
+        -545
+      ],
+      "size": [
+        560,
+        400
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            21,
+            23
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "title": "PICTURE 1 | PRIMARY TARGET — choose your photo",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.45.0",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "13E21C6E-89B0-475B-B50B-F80D70C02B25.png",
+        "image"
+      ],
+      "widgets_values_named": {
+        "image": "13E21C6E-89B0-475B-B50B-F80D70C02B25.png",
+        "upload": "image"
+      }
+    },
+    {
+      "id": 20,
+      "type": "LoadImage",
+      "pos": [
+        -1417.6389122009277,
+        -66.73608779907215
+      ],
+      "size": [
+        560,
+        390
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            24
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "title": "PICTURE 2 | PRIMARY REFERENCE — donor / style / scene",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.45.0",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "ChatGPT Image 22 mag 2026, 08_32_32.png",
+        "image"
+      ],
+      "widgets_values_named": {
+        "image": "ChatGPT Image 22 mag 2026, 08_32_32.png",
+        "upload": "image"
+      }
+    },
+    {
+      "id": 44,
+      "type": "PrimitiveFloat",
+      "pos": [
+        -749.5832633972163,
+        429.28810119628787
+      ],
+      "size": [
+        360,
+        80
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 4,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "links": [
+            22
+          ]
+        }
+      ],
+      "title": "OUTPUT QUALITY | Megapixels",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.45.0",
+        "Node name for S&R": "PrimitiveFloat"
+      },
+      "widgets_values": [
+        20
+      ],
+      "widgets_values_named": {
+        "value": 20
+      }
+    },
+    {
+      "id": 21,
+      "type": "GetImageSize",
+      "pos": [
+        -724.334136025428,
+        -446.2870514388086
+      ],
+      "size": [
+        314.0689453125,
+        100
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 21
+        }
+      ],
+      "outputs": [
+        {
+          "name": "width",
+          "type": "INT",
+          "links": [
+            11
+          ]
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "links": [
+            12
+          ]
+        },
+        {
+          "name": "batch_size",
+          "type": "INT",
+          "links": []
+        }
+      ],
+      "title": "Final canvas = Picture 1 ratio × output MP",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.45.0",
+        "Node name for S&R": "GetImageSize"
+      }
+    },
+    {
+      "id": 5,
+      "type": "UNETLoader",
+      "pos": [
+        -1400,
+        730.434959635172
+      ],
+      "size": [
+        480,
+        94
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            6
+          ]
+        }
+      ],
+      "title": "H3 Image diffusion (INT8 ConvRot)",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.45.0",
+        "Node name for S&R": "UNETLoader"
+      },
+      "widgets_values": [
+        "minimax_h3_image_pruned_int8_convrot.safetensors",
+        "default"
+      ],
+      "widgets_values_named": {
+        "unet_name": "minimax_h3_image_pruned_int8_convrot.safetensors",
+        "weight_dtype": "default"
+      }
+    },
+    {
+      "id": 6,
+      "type": "CLIPLoader",
+      "pos": [
+        -870,
+        720
+      ],
+      "size": [
+        500,
+        120
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            7
+          ]
+        }
+      ],
+      "title": "H3 Qwen3-VL visual encoder (INT8)",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.45.0",
+        "Node name for S&R": "CLIPLoader"
+      },
+      "widgets_values": [
+        "qwen3vl_32b_minimax_h3_int8_convrot.safetensors",
+        "minimax",
+        "default"
+      ],
+      "widgets_values_named": {
+        "clip_name": "qwen3vl_32b_minimax_h3_int8_convrot.safetensors",
+        "type": "minimax",
+        "device": "default"
+      }
+    },
+    {
+      "id": 7,
+      "type": "VAELoader",
+      "pos": [
+        -316.95637210699783,
+        725.2174798175861
+      ],
+      "size": [
+        440,
+        95
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            8,
+            18
+          ]
+        }
+      ],
+      "title": "H3 Image VAE FP16",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.45.0",
+        "Node name for S&R": "VAELoader"
+      },
+      "widgets_values": [
+        "minimax_h3_image_vae_fp16.safetensors"
+      ],
+      "widgets_values_named": {
+        "vae_name": "minimax_h3_image_vae_fp16.safetensors"
+      }
+    },
+    {
+      "id": 8,
+      "type": "MiniMaxH3ImageConditioning",
+      "pos": [
+        -116.09374999999994,
+        -535
+      ],
+      "size": [
+        792.2915045738189,
+        767.6040119647948
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 7
+        },
+        {
+          "name": "vae",
+          "shape": 7,
+          "type": "VAE",
+          "link": 8
+        },
+        {
+          "label": "Picture 1",
+          "name": "images.image_0",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 23
+        },
+        {
+          "name": "images.image_1",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 24
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          },
+          "link": 11
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          },
+          "link": 12
+        },
+        {
+          "label": "Picture 4",
+          "name": "images.image_3",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "label": "Picture 5",
+          "name": "images.image_4",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "label": "Picture 6",
+          "name": "images.image_5",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "label": "Picture 7",
+          "name": "images.image_6",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "label": "Picture 8",
+          "name": "images.image_7",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "label": "Picture 9",
+          "name": "images.image_8",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "label": "Picture 10",
+          "name": "images.image_9",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "label": "Picture 11",
+          "name": "images.image_10",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "label": "Picture 12",
+          "name": "images.image_11",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "label": "Picture 13",
+          "name": "images.image_12",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "label": "Picture 14",
+          "name": "images.image_13",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "label": "Picture 15",
+          "name": "images.image_14",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "label": "Picture 16",
+          "name": "images.image_15",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "images.image_2",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "links": [
+            13,
+            14
+          ]
+        },
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            16
+          ]
+        }
+      ],
+      "title": "H3 edit prompt | CHARACTER SWAP | Universal 16",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.45.0",
+        "Node name for S&R": "MiniMaxH3ImageConditioning"
+      },
+      "widgets_values": [
+        "Edit <Picture 1>. Replace the MAIN PERSON and the complete visible outfit with the person shown in <Picture 2>.\n\n<Picture 1> determines the scene, camera perspective, exact location of the person, original action, framing, environment and lighting. <Picture 2> determines the replacement character and pose: recognizable facial identity, head, hairstyle, physique, visible clothing, original clothing colors, textures and accessories.\n\nRecreate the person from <Picture 2> in the original person’s position and pose in <Picture 2>, with natural anatomy, perspective, lighting, occlusion and shadows.\n\nKeep the exact framing and composition of <Picture 1>. Replace only the visible portion of the person within the original photograph. Do not expand the framing, reveal additional body parts, change the camera distance, or turn a portrait into a full-body image.\n\nPreserve the actual clothing visible in <Picture 2>, including its original colors, patterns and fabric appearance. Do not inherit clothing or clothing colors from the person in <Picture 1>, and do not invent a different outfit.\n\nLeave all other people, props and the background of <Picture 1> unchanged. The original person’s head, hair and visible clothing should not remain. Do not create a hybrid of the two people or copy the background of <Picture 2>.",
+        2048,
+        2048
+      ],
+      "widgets_values_named": {
+        "prompt": "Edit <Picture 1>. Replace the MAIN PERSON and the complete visible outfit with the person shown in <Picture 2>.\n\n<Picture 1> determines the scene, camera perspective, exact location of the person, original action, framing, environment and lighting. <Picture 2> determines the replacement character and pose: recognizable facial identity, head, hairstyle, physique, visible clothing, original clothing colors, textures and accessories.\n\nRecreate the person from <Picture 2> in the original person’s position and pose in <Picture 2>, with natural anatomy, perspective, lighting, occlusion and shadows.\n\nKeep the exact framing and composition of <Picture 1>. Replace only the visible portion of the person within the original photograph. Do not expand the framing, reveal additional body parts, change the camera distance, or turn a portrait into a full-body image.\n\nPreserve the actual clothing visible in <Picture 2>, including its original colors, patterns and fabric appearance. Do not inherit clothing or clothing colors from the person in <Picture 1>, and do not invent a different outfit.\n\nLeave all other people, props and the background of <Picture 1> unchanged. The original person’s head, hair and visible clothing should not remain. Do not create a hybrid of the two people or copy the background of <Picture 2>.",
+        "width": 2048,
+        "height": 2048
+      }
+    },
+    {
+      "id": 9,
+      "type": "ConditioningZeroOut",
+      "pos": [
+        814.4790267944334,
+        -112.32641220092705
+      ],
+      "size": [
+        262.341796875,
+        100
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 13
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            15
+          ]
+        }
+      ],
+      "title": "Unconditional zero",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.45.0",
+        "Node name for S&R": "ConditioningZeroOut"
+      }
+    },
+    {
+      "id": 10,
+      "type": "KSampler",
+      "pos": [
+        811.7360877990734,
+        -529.2014122009275
+      ],
+      "size": [
+        430,
+        340
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 6
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 14
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 15
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 16
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            17
+          ]
+        }
+      ],
+      "title": "Sampler — Euler / simple / 6 steps / CFG 1",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.45.0",
+        "Node name for S&R": "KSampler"
+      },
+      "widgets_values": [
+        77,
+        "fixed",
+        6,
+        1,
+        "euler",
+        "simple",
+        1
+      ],
+      "widgets_values_named": {
+        "seed": 77,
+        "control_after_generate": "fixed",
+        "steps": 6,
+        "cfg": 1,
+        "sampler_name": "euler",
+        "scheduler": "simple",
+        "denoise": 1
+      }
+    },
+    {
+      "id": 11,
+      "type": "VAEDecode",
+      "pos": [
+        1346.232473373414,
+        -512.7430963516233
+      ],
+      "size": [
+        360,
+        130
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 17
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 18
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            19,
+            20
+          ]
+        }
+      ],
+      "title": "Decode — MiniMax Image VAE",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.45.0",
+        "Node name for S&R": "VAEDecode"
+      }
+    },
+    {
+      "id": 12,
+      "type": "PreviewImage",
+      "pos": [
+        1793.8716793060294,
+        -539.670209407805
+      ],
+      "size": [
+        360,
+        250
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 19
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": []
+        }
+      ],
+      "title": "Preview raw H3 output",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.45.0",
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 13,
+      "type": "SaveImage",
+      "pos": [
+        1376.0068931579617,
+        -203.81946659088214
+      ],
+      "size": [
+        639.0624642372105,
+        520.3471593856789
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 20
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": []
+        }
+      ],
+      "title": "SAVE | CHARACTER SWAP | UNIVERSAL 16",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.45.0",
+        "Node name for S&R": "SaveImage"
+      },
+      "widgets_values": [
+        "ZetaLvX_H3_character_swap_universal16"
+      ],
+      "widgets_values_named": {
+        "filename_prefix": "ZetaLvX_H3_character_swap_universal16"
+      }
+    },
+    {
+      "id": 25,
+      "type": "Note",
+      "pos": [
+        -56.71439497375468,
+        305.186146907806
+      ],
+      "size": [
+        650,
+        200
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "IMPORTANT — Universal 16 reference mode",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.45.0",
+        "Node name for S&R": "Note"
+      },
+      "widgets_values": [
+        "REFERENCE MODE: UNIVERSAL 16 / DIRECT INPUTS.\nPicture 1 and Picture 2 go directly into MiniMaxH3ImageConditioning.\nUse this version when you want a cleaner base for scaling from 2 pictures to more references without forcing every reference through the same MP prep path."
+      ],
+      "widgets_values_named": {
+        "text": "REFERENCE MODE: UNIVERSAL 16 / DIRECT INPUTS.\nPicture 1 and Picture 2 go directly into MiniMaxH3ImageConditioning.\nUse this version when you want a cleaner base for scaling from 2 pictures to more references without forcing every reference through the same MP prep path."
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 45,
+      "type": "Note",
+      "pos": [
+        -1464.49113268865,
+        -959.0884821557329
+      ],
+      "size": [
+        760,
+        275
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "INFO / LINKS — CHARACTER SWAP | UNIVERSAL 16",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.45.0",
+        "Node name for S&R": "Note"
+      },
+      "widgets_values": [
+        "ZetaLvX | MiniMax H3 Image | CHARACTER SWAP | UNIVERSAL 16\n\nLinks:\n- YouTube: https://youtube.com/@zetalvx\n- Civitai workflow: https://civitai.com/models/3048730/zetalvx-minimax-h3-image-comfyui-workflow\n- GitHub: https://github.com/ZETALVX/ComfyUI\n\nModels used:\n- UNET: minimax_h3_image_pruned_int8_convrot.safetensors\n- Text encoder: qwen3vl_32b_minimax_h3_int8_convrot.safetensors\n- VAE: minimax_h3_image_vae_fp16.safetensors\n\nSampler setup kept unchanged from your tested workflow."
+      ],
+      "widgets_values_named": {
+        "text": "ZetaLvX | MiniMax H3 Image | CHARACTER SWAP | UNIVERSAL 16\n\nLinks:\n- YouTube: https://youtube.com/@zetalvx\n- Civitai workflow: https://civitai.com/models/3048730/zetalvx-minimax-h3-image-comfyui-workflow\n- GitHub: https://github.com/ZETALVX/ComfyUI\n\nModels used:\n- UNET: minimax_h3_image_pruned_int8_convrot.safetensors\n- Text encoder: qwen3vl_32b_minimax_h3_int8_convrot.safetensors\n- VAE: minimax_h3_image_vae_fp16.safetensors\n\nSampler setup kept unchanged from your tested workflow."
+      },
+      "color": "#243",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 46,
+      "type": "Note",
+      "pos": [
+        -640.6272362320224,
+        -1020.3834729888674
+      ],
+      "size": [
+        760,
+        330
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "HOW TO USE EXTRA PICTURES — 3 to 16",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.45.0",
+        "Node name for S&R": "Note"
+      },
+      "widgets_values": [
+        "The MiniMax H3 conditioning node already exposes up to 16 picture inputs.\n\nDefault tested mapping in this workflow:\n- Picture 1 = main target\n- Picture 2 = main donor / reference\n\nAdditional pictures:\n- Picture 3 to Picture 16 can be connected manually by adding more Load Image nodes and plugging them into the corresponding H3 inputs.\n- They are NOT required for the current tested prompts.\n- They become useful only if you intentionally edit the prompt to refer to them.\n\nRecommendation:\n- Keep only the references that are actually useful.\n- More references can increase VRAM/RAM use and may reduce clarity if the prompt does not define each image role clearly."
+      ],
+      "widgets_values_named": {
+        "text": "The MiniMax H3 conditioning node already exposes up to 16 picture inputs.\n\nDefault tested mapping in this workflow:\n- Picture 1 = main target\n- Picture 2 = main donor / reference\n\nAdditional pictures:\n- Picture 3 to Picture 16 can be connected manually by adding more Load Image nodes and plugging them into the corresponding H3 inputs.\n- They are NOT required for the current tested prompts.\n- They become useful only if you intentionally edit the prompt to refer to them.\n\nRecommendation:\n- Keep only the references that are actually useful.\n- More references can increase VRAM/RAM use and may reduce clarity if the prompt does not define each image role clearly."
+      },
+      "color": "#334",
+      "bgcolor": "#556"
+    }
+  ],
+  "links": [
+    [
+      6,
+      5,
+      0,
+      10,
+      0,
+      "MODEL"
+    ],
+    [
+      13,
+      8,
+      0,
+      9,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      14,
+      8,
+      0,
+      10,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      15,
+      9,
+      0,
+      10,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      16,
+      8,
+      1,
+      10,
+      3,
+      "LATENT"
+    ],
+    [
+      17,
+      10,
+      0,
+      11,
+      0,
+      "LATENT"
+    ],
+    [
+      18,
+      7,
+      0,
+      11,
+      1,
+      "VAE"
+    ],
+    [
+      19,
+      11,
+      0,
+      12,
+      0,
+      "IMAGE"
+    ],
+    [
+      20,
+      11,
+      0,
+      13,
+      0,
+      "IMAGE"
+    ],
+    [
+      21,
+      19,
+      0,
+      21,
+      0,
+      "IMAGE"
+    ],
+    [
+      22,
+      44,
+      0,
+      21,
+      1,
+      "FLOAT"
+    ],
+    [
+      7,
+      6,
+      0,
+      8,
+      0,
+      "CLIP"
+    ],
+    [
+      8,
+      7,
+      0,
+      8,
+      1,
+      "VAE"
+    ],
+    [
+      23,
+      19,
+      0,
+      8,
+      2,
+      "IMAGE"
+    ],
+    [
+      24,
+      20,
+      0,
+      8,
+      3,
+      "IMAGE"
+    ],
+    [
+      11,
+      21,
+      0,
+      8,
+      4,
+      "INT"
+    ],
+    [
+      12,
+      21,
+      1,
+      8,
+      5,
+      "INT"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "01 | INPUT IMAGES  —  Picture order matters",
+      "bounding": [
+        -1480,
+        -640,
+        690,
+        1180
+      ],
+      "color": "#3C6C82",
+      "flags": {}
+    },
+    {
+      "id": 2,
+      "title": "02 | IMAGE PREP  —  One 4 MP quality dial",
+      "bounding": [
+        -770,
+        -640,
+        590,
+        1180
+      ],
+      "color": "#3A6971",
+      "flags": {}
+    },
+    {
+      "id": 3,
+      "title": "03 | MODEL FILES  —  Your existing H3 weights",
+      "bounding": [
+        -1480,
+        650,
+        1690.6046893467887,
+        219.34486599435922
+      ],
+      "color": "#556D86",
+      "flags": {}
+    },
+    {
+      "id": 4,
+      "title": "04 | H3 CONDITIONING  —  Edit prompt and render",
+      "bounding": [
+        -150,
+        -640,
+        860,
+        1180
+      ],
+      "color": "#647F64",
+      "flags": {}
+    },
+    {
+      "id": 5,
+      "title": "05 | RENDER AND RESULTS",
+      "bounding": [
+        760,
+        -620,
+        1530,
+        980
+      ],
+      "color": "#746B94",
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "workflowRendererVersion": "LG",
+    "ds": {
+      "scale": 0.5818181818181853,
+      "offset": [
+        1920.0304697790261,
+        974.9257546213302
+      ]
+    },
+    "frontendVersion": "1.53.6",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}

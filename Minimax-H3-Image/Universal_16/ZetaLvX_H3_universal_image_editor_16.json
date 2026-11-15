@@ -1,0 +1,1189 @@
+{
+  "id": "b8a7cb20-8536-458f-8507-650d8fde4ffb",
+  "revision": 0,
+  "last_node_id": 21,
+  "last_link_id": 21,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "ResolutionSelector",
+      "pos": [
+        -1250,
+        -600
+      ],
+      "size": [
+        410,
+        174
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "showAdvanced": true,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "width",
+          "type": "INT",
+          "links": [
+            1,
+            4
+          ]
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "links": [
+            2,
+            5
+          ]
+        }
+      ],
+      "title": "ASPECT RATIO — choose output shape",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.45.0",
+        "Node name for S&R": "ResolutionSelector"
+      },
+      "widgets_values": [
+        "16:9 (Widescreen)",
+        16,
+        32
+      ],
+      "widgets_values_named": {
+        "aspect_ratio": "16:9 (Widescreen)",
+        "megapixels": 16,
+        "multiple": 32
+      }
+    },
+    {
+      "id": 2,
+      "type": "PrimitiveFloat",
+      "pos": [
+        -1250,
+        -330
+      ],
+      "size": [
+        410,
+        92
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "links": [
+            3,
+            6
+          ]
+        }
+      ],
+      "title": "QUALITY | Target megapixels: 4 → 8 → 16 → 20",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.45.0",
+        "Node name for S&R": "PrimitiveFloat"
+      },
+      "widgets_values": [
+        20
+      ],
+      "widgets_values_named": {
+        "value": 20
+      }
+    },
+    {
+      "id": 3,
+      "type": "ComfyMathExpression",
+      "pos": [
+        -770,
+        -600
+      ],
+      "size": [
+        440,
+        182
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "values.a",
+          "type": "FLOAT,INT,BOOLEAN",
+          "link": 1
+        },
+        {
+          "name": "values.b",
+          "shape": 7,
+          "type": "FLOAT,INT,BOOLEAN",
+          "link": 2
+        },
+        {
+          "name": "values.c",
+          "shape": 7,
+          "type": "FLOAT,INT,BOOLEAN",
+          "link": 3
+        },
+        {
+          "name": "values.d",
+          "shape": 7,
+          "type": "FLOAT,INT,BOOLEAN",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "links": []
+        },
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            7
+          ]
+        },
+        {
+          "name": "BOOL",
+          "type": "BOOLEAN",
+          "links": []
+        }
+      ],
+      "title": "Calculated width",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.45.0",
+        "Node name for S&R": "ComfyMathExpression"
+      },
+      "widgets_values": [
+        "round(sqrt(a / b * c * 1000000) / 32) * 32"
+      ],
+      "widgets_values_named": {
+        "expression": "round(sqrt(a / b * c * 1000000) / 32) * 32"
+      }
+    },
+    {
+      "id": 4,
+      "type": "ComfyMathExpression",
+      "pos": [
+        -770,
+        -330
+      ],
+      "size": [
+        440,
+        182
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "values.a",
+          "type": "FLOAT,INT,BOOLEAN",
+          "link": 4
+        },
+        {
+          "name": "values.b",
+          "shape": 7,
+          "type": "FLOAT,INT,BOOLEAN",
+          "link": 5
+        },
+        {
+          "name": "values.c",
+          "shape": 7,
+          "type": "FLOAT,INT,BOOLEAN",
+          "link": 6
+        },
+        {
+          "name": "values.d",
+          "shape": 7,
+          "type": "FLOAT,INT,BOOLEAN",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "links": []
+        },
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            8
+          ]
+        },
+        {
+          "name": "BOOL",
+          "type": "BOOLEAN",
+          "links": []
+        }
+      ],
+      "title": "Calculated height",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.45.0",
+        "Node name for S&R": "ComfyMathExpression"
+      },
+      "widgets_values": [
+        "round(sqrt(b / a * c * 1000000) / 32) * 32"
+      ],
+      "widgets_values_named": {
+        "expression": "round(sqrt(b / a * c * 1000000) / 32) * 32"
+      }
+    },
+    {
+      "id": 5,
+      "type": "UNETLoader",
+      "pos": [
+        -225,
+        -595
+      ],
+      "size": [
+        530,
+        94
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            11
+          ]
+        }
+      ],
+      "title": "H3 Image diffusion (INT8 ConvRot)",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.45.0",
+        "Node name for S&R": "UNETLoader"
+      },
+      "widgets_values": [
+        "minimax_h3_image_pruned_int8_convrot.safetensors",
+        "default"
+      ],
+      "widgets_values_named": {
+        "unet_name": "minimax_h3_image_pruned_int8_convrot.safetensors",
+        "weight_dtype": "default"
+      },
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 6,
+      "type": "CLIPLoader",
+      "pos": [
+        -225,
+        -435
+      ],
+      "size": [
+        530,
+        128
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            9
+          ]
+        }
+      ],
+      "title": "H3 Qwen3-VL visual encoder (INT8)",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.45.0",
+        "Node name for S&R": "CLIPLoader"
+      },
+      "widgets_values": [
+        "qwen3vl_32b_minimax_h3_int8_convrot.safetensors",
+        "minimax",
+        "default"
+      ],
+      "widgets_values_named": {
+        "clip_name": "qwen3vl_32b_minimax_h3_int8_convrot.safetensors",
+        "type": "minimax",
+        "device": "default"
+      }
+    },
+    {
+      "id": 7,
+      "type": "VAELoader",
+      "pos": [
+        -225,
+        -245
+      ],
+      "size": [
+        530,
+        90
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            10,
+            17
+          ]
+        }
+      ],
+      "title": "H3 Image VAE FP16",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.45.0",
+        "Node name for S&R": "VAELoader"
+      },
+      "widgets_values": [
+        "minimax_h3_image_vae_fp16.safetensors"
+      ],
+      "widgets_values_named": {
+        "vae_name": "minimax_h3_image_vae_fp16.safetensors"
+      },
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 8,
+      "type": "MiniMaxH3ImageConditioning",
+      "pos": [
+        381.22582806043386,
+        -608.8751245924263
+      ],
+      "size": [
+        666.8817693536927,
+        718.8337745351234
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 9
+        },
+        {
+          "name": "vae",
+          "shape": 7,
+          "type": "VAE",
+          "link": 10
+        },
+        {
+          "label": "Picture 1",
+          "name": "images.image_0",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 21
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          },
+          "link": 7
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          },
+          "link": 8
+        },
+        {
+          "label": "Picture 2",
+          "name": "images.image_1",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "label": "Picture 3",
+          "name": "images.image_2",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "label": "Picture 4",
+          "name": "images.image_3",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "label": "Picture 5",
+          "name": "images.image_4",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "label": "Picture 6",
+          "name": "images.image_5",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "label": "Picture 7",
+          "name": "images.image_6",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "label": "Picture 8",
+          "name": "images.image_7",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "label": "Picture 9",
+          "name": "images.image_8",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "label": "Picture 10",
+          "name": "images.image_9",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "label": "Picture 11",
+          "name": "images.image_10",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "label": "Picture 12",
+          "name": "images.image_11",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "label": "Picture 13",
+          "name": "images.image_12",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "label": "Picture 14",
+          "name": "images.image_13",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "label": "Picture 15",
+          "name": "images.image_14",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "label": "Picture 16",
+          "name": "images.image_15",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "links": [
+            12,
+            13
+          ]
+        },
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            15
+          ]
+        }
+      ],
+      "title": "H3 prompt | UNIVERSAL IMAGE EDITOR 16",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.45.0",
+        "Node name for S&R": "MiniMaxH3ImageConditioning"
+      },
+      "widgets_values": [
+        "Edit the provided image_1 by ADDING TYPOGRAPHY ONLY. This is a strict image preservation task.\n\nKeep the original photograph completely unchanged. Preserve the exact same person, facial features, expression, hairstyle, sunglasses, jacket, colors, lighting, geometric background, framing, camera angle, and image proportions. Do not crop, extend, redraw, retouch, enhance, recolor, or regenerate any part of the original image.\n\nCreate an elegant, high-impact YouTube thumbnail text overlay using these EXACT words:\n\nH3-IMAGE\nCOMFYUI\nOPTIMIZED WORKFLOWS\n\nPlace the typography mainly across the lower third of the image, avoiding the woman's eyes, glasses, nose, and mouth.\n\n\"H3-IMAGE\" is the dominant headline: very large, bold, modern white sans-serif typography, with \"H3\" highlighted in bright cyan.\n\n\"COMFYUI\" is a smaller secondary heading in white.\n\n\"OPTIMIZED WORKFLOWS\" is a compact uppercase subtitle in cyan, positioned below the main heading.\n\nUse precise typography, consistent letter spacing, sharp edges, professional graphic design, and excellent readability at small thumbnail size.\n\nAdd only a subtle dark translucent gradient or soft shadow directly behind the text if necessary for contrast. Do not otherwise modify the image.\n\nKeep every letter fully visible inside the image boundaries with safe margins. Avoid overlapping the woman's face. Do not add any logos, icons, symbols, watermarks, extra words, frames, decorative graphics, or AI-themed elements.\n\nThe final image must be the original photograph with only the requested professionally designed text overlay added.",
+        4608,
+        3456
+      ],
+      "widgets_values_named": {
+        "prompt": "Edit the provided image_1 by ADDING TYPOGRAPHY ONLY. This is a strict image preservation task.\n\nKeep the original photograph completely unchanged. Preserve the exact same person, facial features, expression, hairstyle, sunglasses, jacket, colors, lighting, geometric background, framing, camera angle, and image proportions. Do not crop, extend, redraw, retouch, enhance, recolor, or regenerate any part of the original image.\n\nCreate an elegant, high-impact YouTube thumbnail text overlay using these EXACT words:\n\nH3-IMAGE\nCOMFYUI\nOPTIMIZED WORKFLOWS\n\nPlace the typography mainly across the lower third of the image, avoiding the woman's eyes, glasses, nose, and mouth.\n\n\"H3-IMAGE\" is the dominant headline: very large, bold, modern white sans-serif typography, with \"H3\" highlighted in bright cyan.\n\n\"COMFYUI\" is a smaller secondary heading in white.\n\n\"OPTIMIZED WORKFLOWS\" is a compact uppercase subtitle in cyan, positioned below the main heading.\n\nUse precise typography, consistent letter spacing, sharp edges, professional graphic design, and excellent readability at small thumbnail size.\n\nAdd only a subtle dark translucent gradient or soft shadow directly behind the text if necessary for contrast. Do not otherwise modify the image.\n\nKeep every letter fully visible inside the image boundaries with safe margins. Avoid overlapping the woman's face. Do not add any logos, icons, symbols, watermarks, extra words, frames, decorative graphics, or AI-themed elements.\n\nThe final image must be the original photograph with only the requested professionally designed text overlay added.",
+        "width": 4608,
+        "height": 3456
+      }
+    },
+    {
+      "id": 9,
+      "type": "ConditioningZeroOut",
+      "pos": [
+        1060,
+        -555
+      ],
+      "size": [
+        320,
+        78
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 13
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            14
+          ]
+        }
+      ],
+      "title": "No CFG • empty negative",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.45.0",
+        "Node name for S&R": "ConditioningZeroOut"
+      }
+    },
+    {
+      "id": 10,
+      "type": "KSampler",
+      "pos": [
+        1071.789738455,
+        -388.295372292
+      ],
+      "size": [
+        510,
+        350
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 11
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 12
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 14
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 15
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            16
+          ]
+        }
+      ],
+      "title": "Sampler — Euler / simple / 6 steps / CFG 1",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.45.0",
+        "Node name for S&R": "KSampler"
+      },
+      "widgets_values": [
+        77,
+        "fixed",
+        6,
+        1,
+        "euler",
+        "simple",
+        1
+      ],
+      "widgets_values_named": {
+        "seed": 77,
+        "control_after_generate": "fixed",
+        "steps": 6,
+        "cfg": 1,
+        "sampler_name": "euler",
+        "scheduler": "simple",
+        "denoise": 1
+      }
+    },
+    {
+      "id": 11,
+      "type": "VAEDecode",
+      "pos": [
+        1690,
+        -570
+      ],
+      "size": [
+        310,
+        80
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 16
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 17
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            18,
+            19
+          ]
+        }
+      ],
+      "title": "DECODE • VAE FP16",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.45.0",
+        "Node name for S&R": "VAEDecode"
+      }
+    },
+    {
+      "id": 12,
+      "type": "PreviewImage",
+      "pos": [
+        2100,
+        -620
+      ],
+      "size": [
+        600,
+        460
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 18
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": []
+        }
+      ],
+      "title": "Preview raw H3 output",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.45.0",
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 13,
+      "type": "SaveImage",
+      "pos": [
+        2100,
+        -80
+      ],
+      "size": [
+        500,
+        120
+      ],
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 19
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": []
+        }
+      ],
+      "title": "SAVE | UNIVERSAL IMAGE EDITOR 16",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.45.0",
+        "Node name for S&R": "SaveImage"
+      },
+      "widgets_values": [
+        "ZetaLvX_H3_universal_image_editor_16"
+      ],
+      "widgets_values_named": {
+        "filename_prefix": "ZetaLvX_H3_universal_image_editor_16"
+      }
+    },
+    {
+      "id": 17,
+      "type": "LoadImage",
+      "pos": [
+        -1215.4914249863486,
+        -178.2275462617589
+      ],
+      "size": [
+        370.43007870483405,
+        372.60122769775404
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            21
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": []
+        }
+      ],
+      "title": "OPTIONAL | LoadImage placeholder",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.45.0",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "immagine.png",
+        "image"
+      ],
+      "widgets_values_named": {
+        "image": "immagine.png",
+        "upload": "image"
+      }
+    },
+    {
+      "id": 18,
+      "type": "Note",
+      "pos": [
+        -1766.8366964538575,
+        308.6057411346437
+      ],
+      "size": [
+        500,
+        260
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "START HERE — UNIVERSAL IMAGE EDITOR 16",
+      "properties": {
+        "text": "",
+        "Node name for S&R": "Note"
+      },
+      "widgets_values": [
+        "1) Connect Picture 1 as the main target image.\n2) Optionally connect Picture 2–16 as extra references.\n3) Write a clear prompt explaining which picture controls what.\n4) Choose aspect ratio and target MP.\n5) Generate.\n\nThis workflow is meant for generic editing, multi-image edits, compositing and reference-guided generation."
+      ],
+      "widgets_values_named": {
+        "text": "1) Connect Picture 1 as the main target image.\n2) Optionally connect Picture 2–16 as extra references.\n3) Write a clear prompt explaining which picture controls what.\n4) Choose aspect ratio and target MP.\n5) Generate.\n\nThis workflow is meant for generic editing, multi-image edits, compositing and reference-guided generation."
+      },
+      "color": "#3f3f46",
+      "bgcolor": "#19191c",
+      "shape": 1
+    },
+    {
+      "id": 19,
+      "type": "Note",
+      "pos": [
+        -1773.3437380615235,
+        -27.464434515380844
+      ],
+      "size": [
+        500,
+        280
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "REFERENCE ORDER — PICTURE 1 TO 16",
+      "properties": {
+        "text": "",
+        "Node name for S&R": "Note"
+      },
+      "widgets_values": [
+        "H3 receives connected references as:\n- Picture 1 = images.image_0\n- Picture 2 = images.image_1\n- Picture 3 = images.image_2\n... up to Picture 16 = images.image_15\n\nAlways name the pictures explicitly in the prompt so the model knows which image controls identity, outfit, environment, object placement or other edit instructions."
+      ],
+      "widgets_values_named": {
+        "text": "H3 receives connected references as:\n- Picture 1 = images.image_0\n- Picture 2 = images.image_1\n- Picture 3 = images.image_2\n... up to Picture 16 = images.image_15\n\nAlways name the pictures explicitly in the prompt so the model knows which image controls identity, outfit, environment, object placement or other edit instructions."
+      },
+      "color": "#3f3f46",
+      "bgcolor": "#19191c",
+      "shape": 1
+    },
+    {
+      "id": 20,
+      "type": "Note",
+      "pos": [
+        -1244.641,
+        306.93717257690435
+      ],
+      "size": [
+        500,
+        250
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "QUALITY / RESOLUTION — UNIVERSAL 16",
+      "properties": {
+        "text": "",
+        "Node name for S&R": "Note"
+      },
+      "widgets_values": [
+        "Use 4 MP for fast tests.\nUse 8 MP for balanced iterations.\nUse 16 MP as the main quality baseline.\nUse 20 MP when you want a higher-detail attempt.\n\nIf source images have very different framing or detail, results can vary more at higher MP because the model has more room to reinterpret the edit."
+      ],
+      "widgets_values_named": {
+        "text": "Use 4 MP for fast tests.\nUse 8 MP for balanced iterations.\nUse 16 MP as the main quality baseline.\nUse 20 MP when you want a higher-detail attempt.\n\nIf source images have very different framing or detail, results can vary more at higher MP because the model has more room to reinterpret the edit."
+      },
+      "color": "#3f3f46",
+      "bgcolor": "#19191c",
+      "shape": 1
+    },
+    {
+      "id": 21,
+      "type": "Note",
+      "pos": [
+        -701.6269167846679,
+        310.1908274230957
+      ],
+      "size": [
+        491.86611074218763,
+        256.07699916076666
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "INFO / LINKS — UNIVERSAL 16",
+      "properties": {
+        "text": "",
+        "Node name for S&R": "Note"
+      },
+      "widgets_values": [
+        "ZetaLvX | MiniMax H3 Image | UNIVERSAL IMAGE EDITOR 16\n\nLinks:\n- YouTube: https://youtube.com/@zetalvx\n- Civitai workflow: https://civitai.com/models/3048730/zetalvx-minimax-h3-image-comfyui-workflow\n- GitHub: https://github.com/ZETALVX/ComfyUI\n\nModels used:\n- UNET: minimax_h3_image_pruned_int8_convrot.safetensors\n- Text encoder: qwen3vl_32b_minimax_h3_int8_convrot.safetensors\n- VAE: minimax_h3_image_vae_fp16.safetensors\n\nSame core setup, expanded for general editing and up to 16 references."
+      ],
+      "widgets_values_named": {
+        "text": "ZetaLvX | MiniMax H3 Image | UNIVERSAL IMAGE EDITOR 16\n\nLinks:\n- YouTube: https://youtube.com/@zetalvx\n- Civitai workflow: https://civitai.com/models/3048730/zetalvx-minimax-h3-image-comfyui-workflow\n- GitHub: https://github.com/ZETALVX/ComfyUI\n\nModels used:\n- UNET: minimax_h3_image_pruned_int8_convrot.safetensors\n- Text encoder: qwen3vl_32b_minimax_h3_int8_convrot.safetensors\n- VAE: minimax_h3_image_vae_fp16.safetensors\n\nSame core setup, expanded for general editing and up to 16 references."
+      },
+      "color": "#3f3f46",
+      "bgcolor": "#19191c",
+      "shape": 1
+    }
+  ],
+  "links": [
+    [
+      11,
+      5,
+      0,
+      10,
+      0,
+      "MODEL"
+    ],
+    [
+      12,
+      8,
+      0,
+      10,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      13,
+      8,
+      0,
+      9,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      14,
+      9,
+      0,
+      10,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      15,
+      8,
+      1,
+      10,
+      3,
+      "LATENT"
+    ],
+    [
+      16,
+      10,
+      0,
+      11,
+      0,
+      "LATENT"
+    ],
+    [
+      17,
+      7,
+      0,
+      11,
+      1,
+      "VAE"
+    ],
+    [
+      18,
+      11,
+      0,
+      12,
+      0,
+      "IMAGE"
+    ],
+    [
+      19,
+      11,
+      0,
+      13,
+      0,
+      "IMAGE"
+    ],
+    [
+      9,
+      6,
+      0,
+      8,
+      0,
+      "CLIP"
+    ],
+    [
+      10,
+      7,
+      0,
+      8,
+      1,
+      "VAE"
+    ],
+    [
+      7,
+      3,
+      1,
+      8,
+      3,
+      "INT"
+    ],
+    [
+      8,
+      4,
+      1,
+      8,
+      4,
+      "INT"
+    ],
+    [
+      1,
+      1,
+      0,
+      3,
+      0,
+      "INT"
+    ],
+    [
+      2,
+      1,
+      1,
+      3,
+      1,
+      "INT"
+    ],
+    [
+      3,
+      2,
+      0,
+      3,
+      2,
+      "FLOAT"
+    ],
+    [
+      4,
+      1,
+      0,
+      4,
+      0,
+      "INT"
+    ],
+    [
+      5,
+      1,
+      1,
+      4,
+      1,
+      "INT"
+    ],
+    [
+      6,
+      2,
+      0,
+      4,
+      2,
+      "FLOAT"
+    ],
+    [
+      21,
+      17,
+      0,
+      8,
+      2,
+      "IMAGE"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "1 — FORMATO e MP",
+      "bounding": [
+        -1270,
+        -675,
+        980,
+        775
+      ],
+      "color": "#596f95",
+      "flags": {}
+    },
+    {
+      "id": 2,
+      "title": "2 — MODELLI",
+      "bounding": [
+        -250,
+        -675,
+        585,
+        748
+      ],
+      "color": "#c28a54",
+      "flags": {}
+    },
+    {
+      "id": 3,
+      "title": "3 — PROMPT e SIZE",
+      "bounding": [
+        370,
+        -675,
+        680,
+        768
+      ],
+      "color": "#5b9d6c",
+      "flags": {}
+    },
+    {
+      "id": 4,
+      "title": "4 — SAMPLING",
+      "bounding": [
+        1035,
+        -675,
+        565,
+        738
+      ],
+      "color": "#8c6286",
+      "flags": {}
+    },
+    {
+      "id": 5,
+      "title": "5 — OUTPUT",
+      "bounding": [
+        1660,
+        -675,
+        1080,
+        825
+      ],
+      "color": "#52a2a5",
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.8264462809917359,
+      "offset": [
+        1350.6560390012417,
+        689.499632744596
+      ]
+    },
+    "frontendVersion": "1.53.6",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "extensions": {
+    "seed_widgets": {
+      "10": 0
+    }
+  },
+  "version": 0.4
+}
