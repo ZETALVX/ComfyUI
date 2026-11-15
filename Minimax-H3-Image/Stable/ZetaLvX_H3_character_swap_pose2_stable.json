@@ -1,0 +1,1166 @@
+{
+  "id": "ba2acde9-0899-5dac-99e3-c935ecb6e16d",
+  "revision": 1,
+  "last_node_id": 45,
+  "last_link_id": 20,
+  "nodes": [
+    {
+      "id": 19,
+      "type": "LoadImage",
+      "pos": [
+        -1410,
+        -545
+      ],
+      "size": [
+        560,
+        400
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            1
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": []
+        }
+      ],
+      "title": "PICTURE 1 | TARGET SCENE — choose your photo",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.45.0",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "13E21C6E-89B0-475B-B50B-F80D70C02B25.png",
+        "image"
+      ],
+      "widgets_values_named": {
+        "image": "13E21C6E-89B0-475B-B50B-F80D70C02B25.png",
+        "upload": "image"
+      }
+    },
+    {
+      "id": 20,
+      "type": "LoadImage",
+      "pos": [
+        -1410,
+        -65.41841688156126
+      ],
+      "size": [
+        560,
+        390
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            2
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": []
+        }
+      ],
+      "title": "PICTURE 2 | REFERENCE — face / outfit / scene",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.45.0",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "ChatGPT Image 22 mag 2026, 08_32_32.png",
+        "image"
+      ],
+      "widgets_values_named": {
+        "image": "ChatGPT Image 22 mag 2026, 08_32_32.png",
+        "upload": "image"
+      }
+    },
+    {
+      "id": 40,
+      "type": "ImageScaleToTotalPixels",
+      "pos": [
+        -678.9930606842045,
+        -419.5433678388598
+      ],
+      "size": [
+        335,
+        118
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 1
+        },
+        {
+          "name": "megapixels",
+          "type": "FLOAT",
+          "widget": {
+            "name": "megapixels"
+          },
+          "link": 3
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            5,
+            9
+          ]
+        }
+      ],
+      "title": "Target prep — 4 MP / lanczos / x32",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.45.0",
+        "Node name for S&R": "ImageScaleToTotalPixels"
+      },
+      "widgets_values": [
+        "lanczos",
+        4,
+        32
+      ],
+      "widgets_values_named": {
+        "upscale_method": "lanczos",
+        "megapixels": 4,
+        "resolution_steps": 32
+      }
+    },
+    {
+      "id": 41,
+      "type": "ImageScaleToTotalPixels",
+      "pos": [
+        -664.6972585830133,
+        35.162642804022596
+      ],
+      "size": [
+        335,
+        118
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 2
+        },
+        {
+          "name": "megapixels",
+          "type": "FLOAT",
+          "widget": {
+            "name": "megapixels"
+          },
+          "link": 4
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            10
+          ]
+        }
+      ],
+      "title": "Reference prep — 4 MP / lanczos / x32",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.45.0",
+        "Node name for S&R": "ImageScaleToTotalPixels"
+      },
+      "widgets_values": [
+        "lanczos",
+        4,
+        32
+      ],
+      "widgets_values_named": {
+        "upscale_method": "lanczos",
+        "megapixels": 4,
+        "resolution_steps": 32
+      }
+    },
+    {
+      "id": 44,
+      "type": "PrimitiveFloat",
+      "pos": [
+        -1310.6405788421612,
+        413.9339957237236
+      ],
+      "size": [
+        360,
+        80
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "links": [
+            3,
+            4
+          ]
+        }
+      ],
+      "title": "QUALITY | Megapixels: 4 → 8 → 16",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.45.0",
+        "Node name for S&R": "PrimitiveFloat"
+      },
+      "widgets_values": [
+        20
+      ],
+      "widgets_values_named": {
+        "value": 20
+      }
+    },
+    {
+      "id": 21,
+      "type": "GetImageSize",
+      "pos": [
+        -680.515613460539,
+        -165.86281003952126
+      ],
+      "size": [
+        310,
+        100
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 5
+        }
+      ],
+      "outputs": [
+        {
+          "name": "width",
+          "type": "INT",
+          "links": [
+            11
+          ]
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "links": [
+            12
+          ]
+        },
+        {
+          "name": "batch_size",
+          "type": "INT",
+          "links": []
+        }
+      ],
+      "title": "Final canvas = target ratio × target MP",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.45.0",
+        "Node name for S&R": "GetImageSize"
+      },
+      "widgets_values": [],
+      "widgets_values_named": {}
+    },
+    {
+      "id": 5,
+      "type": "UNETLoader",
+      "pos": [
+        -1429.4096965789795,
+        741.0070085525513
+      ],
+      "size": [
+        480,
+        94
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            6
+          ]
+        }
+      ],
+      "title": "H3 Image diffusion (INT8 ConvRot)",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.45.0",
+        "Node name for S&R": "UNETLoader"
+      },
+      "widgets_values": [
+        "minimax_h3_image_pruned_int8_convrot.safetensors",
+        "default"
+      ],
+      "widgets_values_named": {
+        "unet_name": "minimax_h3_image_pruned_int8_convrot.safetensors",
+        "weight_dtype": "default"
+      }
+    },
+    {
+      "id": 6,
+      "type": "CLIPLoader",
+      "pos": [
+        -874.201286315918,
+        724.2014017105103
+      ],
+      "size": [
+        500,
+        120
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            7
+          ]
+        }
+      ],
+      "title": "H3 Qwen3-VL visual encoder (INT8)",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.45.0",
+        "Node name for S&R": "CLIPLoader"
+      },
+      "widgets_values": [
+        "qwen3vl_32b_minimax_h3_int8_convrot.safetensors",
+        "minimax",
+        "default"
+      ],
+      "widgets_values_named": {
+        "clip_name": "qwen3vl_32b_minimax_h3_int8_convrot.safetensors",
+        "type": "minimax",
+        "device": "default"
+      }
+    },
+    {
+      "id": 7,
+      "type": "VAELoader",
+      "pos": [
+        -300.5903034210205,
+        736.8055491447449
+      ],
+      "size": [
+        440,
+        95
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            8,
+            18
+          ]
+        }
+      ],
+      "title": "H3 Image VAE FP16",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.45.0",
+        "Node name for S&R": "VAELoader"
+      },
+      "widgets_values": [
+        "minimax_h3_image_vae_fp16.safetensors"
+      ],
+      "widgets_values_named": {
+        "vae_name": "minimax_h3_image_vae_fp16.safetensors"
+      }
+    },
+    {
+      "id": 8,
+      "type": "MiniMaxH3ImageConditioning",
+      "pos": [
+        -116.09374999999994,
+        -535
+      ],
+      "size": [
+        746.0937023162833,
+        721.4062070846549
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 7
+        },
+        {
+          "name": "vae",
+          "shape": 7,
+          "type": "VAE",
+          "link": 8
+        },
+        {
+          "label": "image_0",
+          "name": "images.image_0",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 9
+        },
+        {
+          "name": "images.image_1",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 10
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          },
+          "link": 11
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          },
+          "link": 12
+        },
+        {
+          "label": "image_3",
+          "name": "images.image_3",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "label": "image_4",
+          "name": "images.image_4",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "label": "image_5",
+          "name": "images.image_5",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "label": "image_6",
+          "name": "images.image_6",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "label": "image_7",
+          "name": "images.image_7",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "label": "image_8",
+          "name": "images.image_8",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "label": "image_9",
+          "name": "images.image_9",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "label": "image_10",
+          "name": "images.image_10",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "label": "image_11",
+          "name": "images.image_11",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "label": "image_12",
+          "name": "images.image_12",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "label": "image_13",
+          "name": "images.image_13",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "label": "image_14",
+          "name": "images.image_14",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "label": "image_15",
+          "name": "images.image_15",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "images.image_2",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "links": [
+            13,
+            14
+          ]
+        },
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            16
+          ]
+        }
+      ],
+      "title": "H3 edit prompt | <Picture 1>, <Picture 2>",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.45.0",
+        "Node name for S&R": "MiniMaxH3ImageConditioning"
+      },
+      "widgets_values": [
+        "Edit <Picture 1>. Replace the MAIN PERSON and the complete visible outfit with the person shown in <Picture 2>.\n\n<Picture 1> determines the scene, camera perspective, exact location of the person, original action, framing, environment and lighting. <Picture 2> determines the replacement character and pose: recognizable facial identity, head, hairstyle, physique, visible clothing, original clothing colors, textures and accessories.\n\nRecreate the person from <Picture 2> in the original person’s position and pose in <Picture 2>, with natural anatomy, perspective, lighting, occlusion and shadows.\n\nKeep the exact framing and composition of <Picture 1>. Replace only the visible portion of the person within the original photograph. Do not expand the framing, reveal additional body parts, change the camera distance, or turn a portrait into a full-body image.\n\nPreserve the actual clothing visible in <Picture 2>, including its original colors, patterns and fabric appearance. Do not inherit clothing or clothing colors from the person in <Picture 1>, and do not invent a different outfit.\n\nLeave all other people, props and the background of <Picture 1> unchanged. The original person’s head, hair and visible clothing should not remain. Do not create a hybrid of the two people or copy the background of <Picture 2>.",
+        2048,
+        2048
+      ],
+      "widgets_values_named": {
+        "prompt": "Edit <Picture 1>. Replace the MAIN PERSON and the complete visible outfit with the person shown in <Picture 2>.\n\n<Picture 1> determines the scene, camera perspective, exact location of the person, original action, framing, environment and lighting. <Picture 2> determines the replacement character and pose: recognizable facial identity, head, hairstyle, physique, visible clothing, original clothing colors, textures and accessories.\n\nRecreate the person from <Picture 2> in the original person’s position and pose in <Picture 2>, with natural anatomy, perspective, lighting, occlusion and shadows.\n\nKeep the exact framing and composition of <Picture 1>. Replace only the visible portion of the person within the original photograph. Do not expand the framing, reveal additional body parts, change the camera distance, or turn a portrait into a full-body image.\n\nPreserve the actual clothing visible in <Picture 2>, including its original colors, patterns and fabric appearance. Do not inherit clothing or clothing colors from the person in <Picture 1>, and do not invent a different outfit.\n\nLeave all other people, props and the background of <Picture 1> unchanged. The original person’s head, hair and visible clothing should not remain. Do not create a hybrid of the two people or copy the background of <Picture 2>.",
+        "width": 2048,
+        "height": 2048
+      }
+    },
+    {
+      "id": 9,
+      "type": "ConditioningZeroOut",
+      "pos": [
+        872.3439807891841,
+        -118.0554337501519
+      ],
+      "size": [
+        262.341796875,
+        100
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 13
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            15
+          ]
+        }
+      ],
+      "title": "Unconditional zero",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.45.0",
+        "Node name for S&R": "ConditioningZeroOut"
+      }
+    },
+    {
+      "id": 10,
+      "type": "KSampler",
+      "pos": [
+        870.9377307891853,
+        -533.0208237171171
+      ],
+      "size": [
+        430,
+        340
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 6
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 14
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 15
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 16
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            17
+          ]
+        }
+      ],
+      "title": "Sampler — Euler / simple / 6 steps / CFG 1",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.45.0",
+        "Node name for S&R": "KSampler"
+      },
+      "widgets_values": [
+        77,
+        "fixed",
+        6,
+        1,
+        "euler",
+        "simple",
+        1
+      ],
+      "widgets_values_named": {
+        "seed": 77,
+        "control_after_generate": "fixed",
+        "steps": 6,
+        "cfg": 1,
+        "sampler_name": "euler",
+        "scheduler": "simple",
+        "denoise": 1
+      }
+    },
+    {
+      "id": 11,
+      "type": "VAEDecode",
+      "pos": [
+        1384.0450363159187,
+        -532.2222254276273
+      ],
+      "size": [
+        360,
+        130
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 17
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 18
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            19,
+            20
+          ]
+        }
+      ],
+      "title": "Decode — MiniMax Image VAE",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.45.0",
+        "Node name for S&R": "VAEDecode"
+      }
+    },
+    {
+      "id": 12,
+      "type": "PreviewImage",
+      "pos": [
+        1832.0260918357144,
+        -541.3495231975194
+      ],
+      "size": [
+        360,
+        250
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 19
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": []
+        }
+      ],
+      "title": "Preview raw H3 output",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.45.0",
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 13,
+      "type": "SaveImage",
+      "pos": [
+        1378.1077671051048,
+        -161.62559288198403
+      ],
+      "size": [
+        647.3439879417393,
+        472.5693843364695
+      ],
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 20
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": []
+        }
+      ],
+      "title": "SAVE | CHARACTER SWAP | STABLE",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.45.0",
+        "Node name for S&R": "SaveImage"
+      },
+      "widgets_values": [
+        "ZetaLvX_H3_character_swap_stable"
+      ],
+      "widgets_values_named": {
+        "filename_prefix": "ZetaLvX_H3_character_swap_stable"
+      }
+    },
+    {
+      "id": 24,
+      "type": "Note",
+      "pos": [
+        -1450,
+        -855
+      ],
+      "size": [
+        615,
+        190
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "START HERE — CHARACTER SWAP | STABLE",
+      "properties": {
+        "Node name for S&R": "Note",
+        "cnr_id": "comfy-core",
+        "ver": "0.45.0"
+      },
+      "widgets_values": [
+        "1) Picture 1 = target scene. Picture 2 = donor / reference.\n2) This STABLE variant keeps your current tested behavior unchanged.\n3) The existing prep nodes are intentionally preserved.\n4) Start with the MP value already present in the workflow, then compare with fixed seed if needed.\n5) Prompt and sampler settings are the same as your tested version."
+      ],
+      "widgets_values_named": {
+        "text": "1) Picture 1 = target scene. Picture 2 = donor / reference.\n2) This STABLE variant keeps your current tested behavior unchanged.\n3) The existing prep nodes are intentionally preserved.\n4) Start with the MP value already present in the workflow, then compare with fixed seed if needed.\n5) Prompt and sampler settings are the same as your tested version."
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 25,
+      "type": "Note",
+      "pos": [
+        -47.47156507873524,
+        286.699979381561
+      ],
+      "size": [
+        650,
+        200
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "IMPORTANT — Stable reference mode",
+      "properties": {
+        "Node name for S&R": "Note",
+        "cnr_id": "comfy-core",
+        "ver": "0.45.0"
+      },
+      "widgets_values": [
+        "REFERENCE MODE: STABLE / CURRENT TESTED VERSION.\nPicture 1 and Picture 2 pass through the existing prep path before reaching H3 conditioning.\nUse this pack if you want the exact behavior of the workflows you have already been testing."
+      ],
+      "widgets_values_named": {
+        "text": "REFERENCE MODE: STABLE / CURRENT TESTED VERSION.\nPicture 1 and Picture 2 pass through the existing prep path before reaching H3 conditioning.\nUse this pack if you want the exact behavior of the workflows you have already been testing."
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 45,
+      "type": "Note",
+      "pos": [
+        -757.4097847884764,
+        -925.2183006796774
+      ],
+      "size": [
+        760,
+        260
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "INFO / LINKS — CHARACTER SWAP | STABLE",
+      "properties": {
+        "Node name for S&R": "Note",
+        "cnr_id": "comfy-core",
+        "ver": "0.45.0"
+      },
+      "widgets_values": [
+        "ZetaLvX | MiniMax H3 Image | CHARACTER SWAP | STABLE\n\nLinks:\n- YouTube: https://youtube.com/@zetalvx\n- Civitai workflow: https://civitai.com/models/3048730/zetalvx-minimax-h3-image-comfyui-workflow\n- GitHub: https://github.com/ZETALVX/ComfyUI\n\nModels used:\n- UNET: minimax_h3_image_pruned_int8_convrot.safetensors\n- Text encoder: qwen3vl_32b_minimax_h3_int8_convrot.safetensors\n- VAE: minimax_h3_image_vae_fp16.safetensors\n\nSampler setup kept unchanged from your tested workflow."
+      ],
+      "widgets_values_named": {
+        "text": "ZetaLvX | MiniMax H3 Image | CHARACTER SWAP | STABLE\n\nLinks:\n- YouTube: https://youtube.com/@zetalvx\n- Civitai workflow: https://civitai.com/models/3048730/zetalvx-minimax-h3-image-comfyui-workflow\n- GitHub: https://github.com/ZETALVX/ComfyUI\n\nModels used:\n- UNET: minimax_h3_image_pruned_int8_convrot.safetensors\n- Text encoder: qwen3vl_32b_minimax_h3_int8_convrot.safetensors\n- VAE: minimax_h3_image_vae_fp16.safetensors\n\nSampler setup kept unchanged from your tested workflow."
+      },
+      "color": "#243",
+      "bgcolor": "#355"
+    }
+  ],
+  "links": [
+    [
+      1,
+      19,
+      0,
+      40,
+      0,
+      "IMAGE"
+    ],
+    [
+      2,
+      20,
+      0,
+      41,
+      0,
+      "IMAGE"
+    ],
+    [
+      5,
+      40,
+      0,
+      21,
+      0,
+      "IMAGE"
+    ],
+    [
+      6,
+      5,
+      0,
+      10,
+      0,
+      "MODEL"
+    ],
+    [
+      13,
+      8,
+      0,
+      9,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      14,
+      8,
+      0,
+      10,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      15,
+      9,
+      0,
+      10,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      16,
+      8,
+      1,
+      10,
+      3,
+      "LATENT"
+    ],
+    [
+      17,
+      10,
+      0,
+      11,
+      0,
+      "LATENT"
+    ],
+    [
+      18,
+      7,
+      0,
+      11,
+      1,
+      "VAE"
+    ],
+    [
+      19,
+      11,
+      0,
+      12,
+      0,
+      "IMAGE"
+    ],
+    [
+      20,
+      11,
+      0,
+      13,
+      0,
+      "IMAGE"
+    ],
+    [
+      3,
+      44,
+      0,
+      40,
+      1,
+      "FLOAT"
+    ],
+    [
+      4,
+      44,
+      0,
+      41,
+      1,
+      "FLOAT"
+    ],
+    [
+      7,
+      6,
+      0,
+      8,
+      0,
+      "CLIP"
+    ],
+    [
+      8,
+      7,
+      0,
+      8,
+      1,
+      "VAE"
+    ],
+    [
+      9,
+      40,
+      0,
+      8,
+      2,
+      "IMAGE"
+    ],
+    [
+      10,
+      41,
+      0,
+      8,
+      3,
+      "IMAGE"
+    ],
+    [
+      11,
+      21,
+      0,
+      8,
+      4,
+      "INT"
+    ],
+    [
+      12,
+      21,
+      1,
+      8,
+      5,
+      "INT"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "01 | INPUT IMAGES  —  Picture order matters",
+      "bounding": [
+        -1480,
+        -640,
+        690,
+        1180
+      ],
+      "color": "#3C6C82",
+      "flags": {}
+    },
+    {
+      "id": 2,
+      "title": "02 | IMAGE PREP  —  One 4 MP quality dial",
+      "bounding": [
+        -770,
+        -640,
+        590,
+        1180
+      ],
+      "color": "#3A6971",
+      "flags": {}
+    },
+    {
+      "id": 3,
+      "title": "03 | MODEL FILES  —  Your existing H3 weights",
+      "bounding": [
+        -1480,
+        650,
+        1678.1249999999986,
+        225.3125000000008
+      ],
+      "color": "#556D86",
+      "flags": {}
+    },
+    {
+      "id": 4,
+      "title": "04 | H3 CONDITIONING  —  Edit prompt and render",
+      "bounding": [
+        -150,
+        -640,
+        860,
+        1180
+      ],
+      "color": "#647F64",
+      "flags": {}
+    },
+    {
+      "id": 5,
+      "title": "05 | RENDER AND RESULTS",
+      "bounding": [
+        760,
+        -620,
+        1530,
+        980
+      ],
+      "color": "#746B94",
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.7040000000000057,
+      "offset": [
+        1691.289414147963,
+        703.6074693661242
+      ]
+    },
+    "frontendVersion": "1.53.6",
+    "workflowRendererVersion": "LG",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "extensions": {
+    "seed_widgets": {
+      "10": 0
+    }
+  },
+  "version": 0.4
+}
